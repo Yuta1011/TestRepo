@@ -16,6 +16,7 @@
 @synthesize digit;
 @synthesize problem;
 @synthesize speed;
+@synthesize course_flg;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -62,38 +63,47 @@
         CCalculationViewController.speed = speed;
         CCalculationViewController.digit = 1;
         CCalculationViewController.problem = 5;
+        CCalculationViewController.course_flg = 1;
     }else if ([segue.identifier isEqualToString:@"1-2"]){
         CCalculationViewController.speed = speed;
         CCalculationViewController.digit = 1;
         CCalculationViewController.problem = 7;
+        CCalculationViewController.course_flg = 1;
     }else if ([segue.identifier isEqualToString:@"1-3"]){
         CCalculationViewController.speed = speed;
         CCalculationViewController.digit = 1;
         CCalculationViewController.problem = 10;
+        CCalculationViewController.course_flg = 1;
     }else if ([segue.identifier isEqualToString:@"2-1"]){
         CCalculationViewController.speed = speed;
         CCalculationViewController.digit = 2;
         CCalculationViewController.problem = 5;
+        CCalculationViewController.course_flg = 2;
     }else if ([segue.identifier isEqualToString:@"2-2"]){
         CCalculationViewController.speed = speed;
         CCalculationViewController.digit = 2;
         CCalculationViewController.problem = 7;
+        CCalculationViewController.course_flg = 2;
     }else if ([segue.identifier isEqualToString:@"2-3"]){
         CCalculationViewController.speed = speed;
         CCalculationViewController.digit = 2;
         CCalculationViewController.problem = 10;
+        CCalculationViewController.course_flg = 2;
     }else if ([segue.identifier isEqualToString:@"3-1"]){
         CCalculationViewController.speed = speed;
         CCalculationViewController.digit = 3;
         CCalculationViewController.problem = 5;
+        CCalculationViewController.course_flg = 3;
     }else if ([segue.identifier isEqualToString:@"3-2"]){
         CCalculationViewController.speed = speed;
         CCalculationViewController.digit = 3;
         CCalculationViewController.problem = 7;
+        CCalculationViewController.course_flg = 3;
     }else if ([segue.identifier isEqualToString:@"3-3"]){
         CCalculationViewController.speed = speed;
         CCalculationViewController.digit = 3;
         CCalculationViewController.problem = 10;
+        CCalculationViewController.course_flg = 3;
     }
 }
 

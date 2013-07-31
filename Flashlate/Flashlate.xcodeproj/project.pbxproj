@@ -29,12 +29,13 @@
 		D695CFE0179D908C00C5BCDE /* ChallengeAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D695CFDF179D908C00C5BCDE /* ChallengeAnswerViewController.m */; };
 		D695CFE417A25C6500C5BCDE /* ChallengeRecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D695CFE317A25C6400C5BCDE /* ChallengeRecordTableViewController.m */; };
 		D695CFE717A2FE6900C5BCDE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D695CFE517A2FE6800C5BCDE /* Model.xcdatamodeld */; };
-		D695CFEA17A3008700C5BCDE /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = D695CFE917A3008600C5BCDE /* Record.m */; };
-		D695CFEE17A3070000C5BCDE /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D695CFED17A3070000C5BCDE /* DataManager.m */; };
+		D695CFEA17A3008700C5BCDE /* FLRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D695CFE917A3008600C5BCDE /* FLRecord.m */; };
+		D695CFEE17A3070000C5BCDE /* FLDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D695CFED17A3070000C5BCDE /* FLDataManager.m */; };
 		D695CFF017A3129B00C5BCDE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D695CFEF17A3129B00C5BCDE /* CoreData.framework */; };
 		D695CFF417A3CB4400C5BCDE /* RecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D695CFF317A3CB4400C5BCDE /* RecordTableViewController.m */; };
-		D695CFF817A4290E00C5BCDE /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695CFF717A4290E00C5BCDE /* RecordCell.m */; };
+		D695CFF817A4290E00C5BCDE /* FLRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695CFF717A4290E00C5BCDE /* FLRecordCell.m */; };
 		D695D0B117A5EDBA00C5BCDE /* heart_life.png in Resources */ = {isa = PBXBuildFile; fileRef = D695D0B017A5EDBA00C5BCDE /* heart_life.png */; };
+		D6AE7E4017A881C0004E00AC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6AE7E3F17A881C0004E00AC /* CoreLocation.framework */; };
 		D6DB61E617A6B3E400335A3D /* breakHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = D6DB61E517A6B3E400335A3D /* breakHeart.png */; };
 		D6DB61E817A6C38700335A3D /* FlashLate_navibar.png in Resources */ = {isa = PBXBuildFile; fileRef = D6DB61E717A6C38700335A3D /* FlashLate_navibar.png */; };
 /* End PBXBuildFile section */
@@ -74,16 +75,17 @@
 		D695CFE217A25C6300C5BCDE /* ChallengeRecordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeRecordTableViewController.h; sourceTree = "<group>"; };
 		D695CFE317A25C6400C5BCDE /* ChallengeRecordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeRecordTableViewController.m; sourceTree = "<group>"; };
 		D695CFE617A2FE6900C5BCDE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		D695CFE817A3008600C5BCDE /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
-		D695CFE917A3008600C5BCDE /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
-		D695CFEC17A3070000C5BCDE /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
-		D695CFED17A3070000C5BCDE /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		D695CFE817A3008600C5BCDE /* FLRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRecord.h; sourceTree = "<group>"; };
+		D695CFE917A3008600C5BCDE /* FLRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRecord.m; sourceTree = "<group>"; };
+		D695CFEC17A3070000C5BCDE /* FLDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLDataManager.h; sourceTree = "<group>"; };
+		D695CFED17A3070000C5BCDE /* FLDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLDataManager.m; sourceTree = "<group>"; };
 		D695CFEF17A3129B00C5BCDE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D695CFF217A3CB4400C5BCDE /* RecordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordTableViewController.h; sourceTree = "<group>"; };
 		D695CFF317A3CB4400C5BCDE /* RecordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordTableViewController.m; sourceTree = "<group>"; };
-		D695CFF617A4290E00C5BCDE /* RecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
-		D695CFF717A4290E00C5BCDE /* RecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
+		D695CFF617A4290E00C5BCDE /* FLRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRecordCell.h; sourceTree = "<group>"; };
+		D695CFF717A4290E00C5BCDE /* FLRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRecordCell.m; sourceTree = "<group>"; };
 		D695D0B017A5EDBA00C5BCDE /* heart_life.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_life.png; sourceTree = "<group>"; };
+		D6AE7E3F17A881C0004E00AC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D6DB61E517A6B3E400335A3D /* breakHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = breakHeart.png; sourceTree = "<group>"; };
 		D6DB61E717A6C38700335A3D /* FlashLate_navibar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlashLate_navibar.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6AE7E4017A881C0004E00AC /* CoreLocation.framework in Frameworks */,
 				D695CFF017A3129B00C5BCDE /* CoreData.framework in Frameworks */,
 				D61B41771799922100F51913 /* UIKit.framework in Frameworks */,
 				D61B41791799922100F51913 /* Foundation.framework in Frameworks */,
@@ -123,6 +126,7 @@
 		D61B41751799922100F51913 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D6AE7E3F17A881C0004E00AC /* CoreLocation.framework */,
 				D695CFEF17A3129B00C5BCDE /* CoreData.framework */,
 				D61B41761799922100F51913 /* UIKit.framework */,
 				D61B41781799922100F51913 /* Foundation.framework */,
@@ -134,14 +138,9 @@
 		D61B417C1799922100F51913 /* Flashlate */ = {
 			isa = PBXGroup;
 			children = (
-				D61B41A517999E6A00F51913 /* TopMenuTableViewController.h */,
-				D61B41A617999E6A00F51913 /* TopMenuTableViewController.m */,
-				D61B41851799922100F51913 /* AppDelegate.h */,
-				D61B41861799922100F51913 /* AppDelegate.m */,
 				D695CFEB17A300F100C5BCDE /* model */,
-				D61B41A817999E7700F51913 /* Free */,
-				D695CFE1179D952900C5BCDE /* Challenge */,
-				D695CFF117A3CB1100C5BCDE /* Record */,
+				D61B41A817999E7700F51913 /* controller */,
+				D695CFF117A3CB1100C5BCDE /* view */,
 				D61B417D1799922100F51913 /* Supporting Files */,
 				D695CFAE179C513700C5BCDE /* Resources */,
 			);
@@ -160,17 +159,31 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D61B41A817999E7700F51913 /* Free */ = {
+		D61B41A817999E7700F51913 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				D61B41851799922100F51913 /* AppDelegate.h */,
+				D61B41861799922100F51913 /* AppDelegate.m */,
+				D61B41A517999E6A00F51913 /* TopMenuTableViewController.h */,
+				D61B41A617999E6A00F51913 /* TopMenuTableViewController.m */,
 				D61B419917999CEB00F51913 /* FreeSettingViewController.h */,
 				D61B419A17999CEB00F51913 /* FreeSettingViewController.m */,
 				D61B419C17999D7500F51913 /* FreeCalculationViewController.h */,
 				D61B419D17999D7500F51913 /* FreeCalculationViewController.m */,
 				D61B419F17999D9900F51913 /* FreeAnswerViewController.h */,
 				D61B41A017999D9900F51913 /* FreeAnswerViewController.m */,
+				D695CFD8179D905200C5BCDE /* ChallengeCourseTableViewController.h */,
+				D695CFD9179D905200C5BCDE /* ChallengeCourseTableViewController.m */,
+				D695CFDB179D907900C5BCDE /* ChallengeCalculationViewController.h */,
+				D695CFDC179D907900C5BCDE /* ChallengeCalculationViewController.m */,
+				D695CFDE179D908C00C5BCDE /* ChallengeAnswerViewController.h */,
+				D695CFDF179D908C00C5BCDE /* ChallengeAnswerViewController.m */,
+				D695CFE217A25C6300C5BCDE /* ChallengeRecordTableViewController.h */,
+				D695CFE317A25C6400C5BCDE /* ChallengeRecordTableViewController.m */,
+				D695CFF217A3CB4400C5BCDE /* RecordTableViewController.h */,
+				D695CFF317A3CB4400C5BCDE /* RecordTableViewController.m */,
 			);
-			name = Free;
+			name = controller;
 			sourceTree = "<group>";
 		};
 		D695CFAE179C513700C5BCDE /* Resources */ = {
@@ -190,42 +203,25 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		D695CFE1179D952900C5BCDE /* Challenge */ = {
-			isa = PBXGroup;
-			children = (
-				D695CFD8179D905200C5BCDE /* ChallengeCourseTableViewController.h */,
-				D695CFD9179D905200C5BCDE /* ChallengeCourseTableViewController.m */,
-				D695CFDB179D907900C5BCDE /* ChallengeCalculationViewController.h */,
-				D695CFDC179D907900C5BCDE /* ChallengeCalculationViewController.m */,
-				D695CFDE179D908C00C5BCDE /* ChallengeAnswerViewController.h */,
-				D695CFDF179D908C00C5BCDE /* ChallengeAnswerViewController.m */,
-				D695CFE217A25C6300C5BCDE /* ChallengeRecordTableViewController.h */,
-				D695CFE317A25C6400C5BCDE /* ChallengeRecordTableViewController.m */,
-			);
-			name = Challenge;
-			sourceTree = "<group>";
-		};
 		D695CFEB17A300F100C5BCDE /* model */ = {
 			isa = PBXGroup;
 			children = (
 				D695CFE517A2FE6800C5BCDE /* Model.xcdatamodeld */,
-				D695CFE817A3008600C5BCDE /* Record.h */,
-				D695CFE917A3008600C5BCDE /* Record.m */,
-				D695CFEC17A3070000C5BCDE /* DataManager.h */,
-				D695CFED17A3070000C5BCDE /* DataManager.m */,
+				D695CFE817A3008600C5BCDE /* FLRecord.h */,
+				D695CFE917A3008600C5BCDE /* FLRecord.m */,
+				D695CFEC17A3070000C5BCDE /* FLDataManager.h */,
+				D695CFED17A3070000C5BCDE /* FLDataManager.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
 		};
-		D695CFF117A3CB1100C5BCDE /* Record */ = {
+		D695CFF117A3CB1100C5BCDE /* view */ = {
 			isa = PBXGroup;
 			children = (
-				D695CFF617A4290E00C5BCDE /* RecordCell.h */,
-				D695CFF717A4290E00C5BCDE /* RecordCell.m */,
-				D695CFF217A3CB4400C5BCDE /* RecordTableViewController.h */,
-				D695CFF317A3CB4400C5BCDE /* RecordTableViewController.m */,
+				D695CFF617A4290E00C5BCDE /* FLRecordCell.h */,
+				D695CFF717A4290E00C5BCDE /* FLRecordCell.m */,
 			);
-			name = Record;
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,10 +307,10 @@
 				D695CFE0179D908C00C5BCDE /* ChallengeAnswerViewController.m in Sources */,
 				D695CFE417A25C6500C5BCDE /* ChallengeRecordTableViewController.m in Sources */,
 				D695CFE717A2FE6900C5BCDE /* Model.xcdatamodeld in Sources */,
-				D695CFEA17A3008700C5BCDE /* Record.m in Sources */,
-				D695CFEE17A3070000C5BCDE /* DataManager.m in Sources */,
+				D695CFEA17A3008700C5BCDE /* FLRecord.m in Sources */,
+				D695CFEE17A3070000C5BCDE /* FLDataManager.m in Sources */,
 				D695CFF417A3CB4400C5BCDE /* RecordTableViewController.m in Sources */,
-				D695CFF817A4290E00C5BCDE /* RecordCell.m in Sources */,
+				D695CFF817A4290E00C5BCDE /* FLRecordCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

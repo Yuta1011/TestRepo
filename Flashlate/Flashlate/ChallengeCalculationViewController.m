@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 yu-yu. All rights reserved.
 //
 
-#import "Record.h"
-#import "DataManager.h"
+#import "FLRecord.h"
+#import "FLDataManager.h"
 #import "ChallengeCalculationViewController.h"
 
 @interface ChallengeCalculationViewController ()
@@ -41,6 +41,7 @@
 @synthesize max_combo;
 @synthesize judge;
 @synthesize record = _record;
+@synthesize course_flg;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -62,24 +63,6 @@
     
     // navigationBar戻る禁止
     [self.navigationItem setHidesBackButton:YES];
-    
-    /*
-    fever_lbl = [[UILabel alloc] initWithFrame:CGRectMake(20,50,100,20)];
-    fever_lbl.font = [UIFont fontWithName:@"Helvetica" size:20];
-    fever_lbl.textColor = [UIColor blackColor];
-    fever_lbl.text=@"フィーバー";
-    fever_lbl.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:fever_lbl];
-    
-    combo_lbl = [[UILabel alloc] initWithFrame:CGRectMake(150,50,200,20)];
-    combo_lbl.font = [UIFont fontWithName:@"Helvetica" size:20];
-    combo_lbl.textColor = [UIColor blackColor];
-    combo_lbl.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:combo_lbl];
-    
-    fever_lbl.hidden=YES;
-    combo_lbl.hidden=YES;
-    */
 }
 
 - (void)didReceiveMemoryWarning
@@ -184,17 +167,15 @@
             judge=@"D";
         }
         
-        // userdefaults　保存
+        // 保存処理
         NSDate *date = [NSDate date];
-        NSString *timeStamp = [date description];
+        NSString *timeDate = [date description];
+        NSString *timeStamp = [timeDate substringToIndex:10];
         
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [[FLDataManager sharedManager] insertJudge:judge point:point timeStamp:timeStamp course_flg:course_flg];
         
-        [ud setInteger:point forKey:@"point"];
-        [ud setObject:judge forKey:@"judge"];
-        [ud setObject:timeStamp forKey:@"timeStamp"];
+        NSLog(@"course_flg:%d", course_flg);
         
-        [ud synchronize];
         
         [self performSegueWithIdentifier:@"Push" sender:self];
     }else{

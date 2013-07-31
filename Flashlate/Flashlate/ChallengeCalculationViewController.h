@@ -36,23 +36,24 @@
 @property (strong, nonatomic) UILabel *fever_lbl;
 @property (strong, nonatomic) UILabel *combo_lbl;
 @property (strong, nonatomic) UIButton *record_btn;
-@property(nonatomic)int digit;
-@property(nonatomic)int problem;
-@property(nonatomic)int speed;
-@property(nonatomic)int count;
-@property(nonatomic)int num;
-@property(nonatomic)int sum;
-@property(nonatomic)BOOL timeflg;
-@property(nonatomic)BOOL startInput;
-@property(nonatomic)int chk_num;    // 重複チェック
-@property(nonatomic)int stg_cnt;    // ステージカウント
-@property(nonatomic)int finish_flg;
-@property(nonatomic)int right_cnt;  // 1...正解 2...不正解
-@property(nonatomic)int wrong_cnt;
-@property(nonatomic)int point;
-@property(nonatomic)int combo_cnt;
-@property(nonatomic)int max_combo;
-@property(nonatomic)NSString *judge;
+@property (nonatomic, assign) int digit;
+@property (nonatomic, assign) int problem;
+@property (nonatomic, assign) int speed;
+@property (nonatomic, assign) int count;
+@property (nonatomic, assign) int num;
+@property (nonatomic, assign) int sum;
+@property (nonatomic, assign) BOOL timeflg;
+@property (nonatomic, assign) BOOL startInput;
+@property (nonatomic, assign) int chk_num;    // 重複チェック
+@property (nonatomic, assign) int stg_cnt;    // ステージカウント
+@property (nonatomic, assign) int finish_flg;
+@property (nonatomic, assign) int right_cnt;  // 1...正解 2...不正解
+@property (nonatomic, assign) int wrong_cnt;
+@property (nonatomic, assign) int point;
+@property (nonatomic, assign) int combo_cnt;
+@property (nonatomic, assign) int max_combo;
+@property (nonatomic, strong) NSString *judge;
+@property (nonatomic, assign) int course_flg;
 
 
 // ポイント

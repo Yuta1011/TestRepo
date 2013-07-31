@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 yu-yu. All rights reserved.
 //
 
-#import "DataManager.h"
+#import "FLDataManager.h"
 #import "ChallengeRecordTableViewController.h"
 
 @interface ChallengeRecordTableViewController ()

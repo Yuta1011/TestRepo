@@ -15,9 +15,10 @@
 }
 
 
-@property(nonatomic)int digit;
-@property(nonatomic)int problem;
-@property(nonatomic)int speed;
+@property(nonatomic, assign)int digit;
+@property(nonatomic, assign)int problem;
+@property(nonatomic, assign)int speed;
+@property(nonatomic, assign)int course_flg;
 
 - (IBAction)speedSegChange:(id)sender;
 

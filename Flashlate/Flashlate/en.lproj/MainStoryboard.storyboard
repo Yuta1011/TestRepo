@@ -80,63 +80,36 @@
             </objects>
             <point key="canvasLocation" x="1110" y="702"/>
         </scene>
-        <!--Record Table View Controller - 記録室-->
+        <!--Record Table View Controller-->
         <scene sceneID="70L-sx-FJY">
             <objects>
                 <tableViewController id="Gvj-Go-9rY" customClass="RecordTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="5z8-7C-07h">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6rT-ic-6Xy">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection headerTitle="" id="eqE-0z-ZWN">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SHi-y4-sDC">
-                                        <rect key="frame" x="0.0" y="10" width="320" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="s8K-ye-eJv">
-                                                    <rect key="frame" x="20" y="0.0" width="260" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <segments>
-                                                        <segment title="初級"/>
-                                                        <segment title="中級"/>
-                                                        <segment title="上級"/>
-                                                    </segments>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="" id="dVI-TN-NoK">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cCW-Lo-1jo">
-                                        <rect key="frame" x="0.0" y="76" width="320" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
-                            <outlet property="dataSource" destination="Gvj-Go-9rY" id="xsL-Fi-e7S"/>
-                            <outlet property="delegate" destination="Gvj-Go-9rY" id="35D-FN-4Ib"/>
+                            <outlet property="dataSource" destination="Gvj-Go-9rY" id="APQ-kf-Kwn"/>
+                            <outlet property="delegate" destination="Gvj-Go-9rY" id="EBd-v7-ACq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="記録室" id="WJa-cd-7O9"/>
+                    <navigationItem key="navigationItem" id="WJa-cd-7O9">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="90C-Ir-lue">
+                            <rect key="frame" x="85" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="初級"/>
+                                <segment title="中級"/>
+                                <segment title="上級"/>
+                            </segments>
+                            <connections>
+                                <action selector="changedSeg:" destination="Gvj-Go-9rY" eventType="valueChanged" id="2SF-wu-SZ9"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
-                        <outlet property="myTableView" destination="5z8-7C-07h" id="SKB-gx-u7g"/>
-                        <outlet property="seg" destination="s8K-ye-eJv" id="p3m-um-V6z"/>
+                        <outlet property="myTableView" destination="6rT-ic-6Xy" id="yEA-BC-xDg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49Y-Yn-69B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -151,7 +124,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection headerTitle="難易度" id="gHs-fh-VDU">
                                 <cells>
@@ -1144,8 +1116,8 @@
         <class className="RecordTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changedSeg:"/>
                 <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="seg" candidateClass="UISegmentedControl"/>
             </relationships>
         </class>
         <class className="TopMenuTableViewController" superclassName="UITableViewController">
