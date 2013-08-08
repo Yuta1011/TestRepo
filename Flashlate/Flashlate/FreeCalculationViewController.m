@@ -23,6 +23,7 @@
 @synthesize timeflg;
 @synthesize chk_num;
 @synthesize startInput;
+@synthesize backSwipe;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,11 +43,20 @@
     
     startInput = YES;
     
-    // navigationBar戻る禁止
+    // navigationBarをhidden
     [self.navigationItem setHidesBackButton:YES];
     
     
     NSLog(@"speed:%d, digit:%d, problem:%d", speed, digit, problem);
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+
+    [super viewDidAppear:animated];
+    NSLog(@"willappear");
+    backSwipe = 0;
     
 }
 
@@ -66,23 +76,23 @@
     sum = 0;
     
     if(speed == 20){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(2.0)
+        timer = [NSTimer scheduledTimerWithTimeInterval:(2.2)
                                                  target:self selector:@selector(onTimer:)
                                                userInfo:nil repeats:YES];
     }else if (speed == 15){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(1.5)
+        timer = [NSTimer scheduledTimerWithTimeInterval:(1.7)
                                                  target:self selector:@selector(onTimer:)
                                                userInfo:nil repeats:YES];
     }else if (speed == 10){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(1.0)
+        timer = [NSTimer scheduledTimerWithTimeInterval:(1.2)
                                                  target:self selector:@selector(onTimer:)
                                                userInfo:nil repeats:YES];
     }else if (speed == 5){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(0.5)
+        timer = [NSTimer scheduledTimerWithTimeInterval:(0.7)
                                                  target:self selector:@selector(onTimer:)
                                                userInfo:nil repeats:YES];
     }else if (speed == 3){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(0.3)
+        timer = [NSTimer scheduledTimerWithTimeInterval:(0.5)
                                                  target:self selector:@selector(onTimer:)
                                                userInfo:nil repeats:YES];
     }
@@ -118,15 +128,38 @@
     count++;
     sum += num;
     
+    if(speed==20){
+        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:2.0];
+    }else if (speed==15) {
+        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:1.5];
+    }else if (speed==10){
+        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:1.0];
+    }else if (speed==5){
+        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:0.5];
+    }else if (speed==3){
+        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:0.3];
+    }
+    
     if(count == problem){
         [self timerStop];
     }
 }
 
+- (void)hiddenNumber
+{
+    num_lbl.text = @"";
+}
+
 -(void)timerStop{
     [timer invalidate];
     timeflg = FALSE;
-    [self performSelector:@selector(nextViewCotroller) withObject:nil afterDelay:0.5];
+    
+    if(backSwipe==1){
+        return;
+    }else{
+        backSwipe = 2;
+        [self performSelector:@selector(nextViewCotroller) withObject:nil afterDelay:0.5];
+    }
 }
 
 -(void)nextViewCotroller{
@@ -140,6 +173,20 @@
     FAnswerViewController.digit = digit;
     FAnswerViewController.problem = problem;
     FAnswerViewController.speed = speed;
+    
+}
+- (IBAction)swipeHandleGesture:(id)sender {
+    
+    // swipeで戻る
+    if(backSwipe==2){
+        return;
+    }else{
+        backSwipe = 1;
+        [self timerStop];
+        
+        FreeSettingViewController *FSettingViewController = [self.navigationController.viewControllers objectAtIndex:0];
+        [self.navigationController popToViewController:FSettingViewController animated:YES];
+    }
     
 }
 

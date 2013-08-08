@@ -73,11 +73,13 @@
 
 -(void)startDidPush{
     stg_cnt++;
+    /*
     if(stg_cnt==5){
         self.title = @"Final Stage";
     }else{
         self.title = [NSString stringWithFormat:@"Stage %d", stg_cnt];
     }
+    */
     num_lbl.text = @"";
     
     [self performSelector:@selector(DidStart) withObject:nil afterDelay:1.0];
@@ -88,15 +90,15 @@
     sum = 0;
     
     if(speed == 15){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(1.5)
+        timer = [NSTimer scheduledTimerWithTimeInterval:(1.7)
                                                  target:self selector:@selector(onTimer:)
                                                userInfo:nil repeats:YES];
     }else if (speed == 10){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(1.0)
+        timer = [NSTimer scheduledTimerWithTimeInterval:(1.2)
                                                  target:self selector:@selector(onTimer:)
                                                userInfo:nil repeats:YES];
     }else if (speed == 5){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(0.5)
+        timer = [NSTimer scheduledTimerWithTimeInterval:(0.7)
                                                  target:self selector:@selector(onTimer:)
                                                userInfo:nil repeats:YES];
     }
@@ -138,11 +140,11 @@
     sum += num;
     
     if (speed==15) {
-        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:1.3];
+        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:1.5];
     }else if (speed==10){
-        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:0.8];
+        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:1.0];
     }else{
-        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:0.5];
     }
 
     if(count == problem){

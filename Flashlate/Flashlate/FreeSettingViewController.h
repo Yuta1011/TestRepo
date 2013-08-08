@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "FreeCalculationViewController.h"
+#import "Global.h"
+#import "QBFlatButton.h"
+#import "FUISegmentedControl.h"
+#import "UIFont+FlatUI.h"
+#import "UIColor+FlatUI.h"
 
 @interface FreeSettingViewController : UIViewController
 {
+    
+    IBOutlet UILabel *lbl_start;
+    
+    IBOutlet QBFlatButton *startBtn;
+    
+    IBOutlet FUISegmentedControl *digitSeg;
+    IBOutlet FUISegmentedControl *problemSeg;
+    IBOutlet FUISegmentedControl *speedSeg;
     
 }
 

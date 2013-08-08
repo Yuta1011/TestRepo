@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ChallengeCalculationViewController.h"
+#import "Global.h"
+#import "QBFlatButton.h"
+#import "FUISegmentedControl.h"
+#import "UIFont+FlatUI.h"
+#import "UIColor+FlatUI.h"
+
 
 @interface ChallengeCourseTableViewController : UITableViewController
 {
+    
+    IBOutlet FUISegmentedControl *speedSeg;
     
 }
 

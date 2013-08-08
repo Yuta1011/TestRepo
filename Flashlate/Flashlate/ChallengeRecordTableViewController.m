@@ -35,12 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.title=@"結果発表";
     myTableView.delegate=self;
     myTableView.dataSource=self;
-    
-    
     
     [self.navigationItem setHidesBackButton:YES];
     

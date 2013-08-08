@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 //#import "ChallengeCalculationViewController.h"
+#import "QBFlatButton.h"
+#import "Global.h"
 
 @protocol ChallengeAnswerViewDelegate
 - (void)nextProblem:(int)result;
@@ -28,18 +30,18 @@
     
     int len;
     
-    IBOutlet UIButton *btn1;
-    IBOutlet UIButton *btn2;
-    IBOutlet UIButton *btn3;
-    IBOutlet UIButton *btn4;
-    IBOutlet UIButton *btn5;
-    IBOutlet UIButton *btn6;
-    IBOutlet UIButton *btn7;
-    IBOutlet UIButton *btn8;
-    IBOutlet UIButton *btn9;
-    IBOutlet UIButton *btn0;
-    IBOutlet UIButton *btn_clear;
-    IBOutlet UIButton *btn_enter;
+    IBOutlet QBFlatButton *btn1;
+    IBOutlet QBFlatButton *btn2;
+    IBOutlet QBFlatButton *btn3;
+    IBOutlet QBFlatButton *btn4;
+    IBOutlet QBFlatButton *btn5;
+    IBOutlet QBFlatButton *btn6;
+    IBOutlet QBFlatButton *btn7;
+    IBOutlet QBFlatButton *btn8;
+    IBOutlet QBFlatButton *btn9;
+    IBOutlet QBFlatButton *btn0;
+    IBOutlet QBFlatButton *btn_clear;
+    IBOutlet QBFlatButton *btn_enter;
     
     UILabel *right_lbl;
     

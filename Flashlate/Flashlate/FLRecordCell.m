@@ -109,19 +109,13 @@
 
 - (void)layoutSubviews
 {
-    //CGRect  rect;
-    
     // 親クラスのメソッドを呼び出す
     [super layoutSubviews];
     
-    // contentViewの大きさを取得する
-    //CGRect  bounds;
-    //bounds = self.contentView.bounds;
-    
-    _rankLabel.frame = CGRectMake(5, 12, 50, 20);
-    _judgeLabel.frame = CGRectMake(70, 12, 30, 20);
-    _pointLabel.frame = CGRectMake(110, 12, 100, 20);
-    _timeStampLabel.frame = CGRectMake(200, 12, 120, 20);
+    _rankLabel.frame = CGRectMake(5, 25, 50, 20);
+    _judgeLabel.frame = CGRectMake(70, 25, 30, 20);
+    _pointLabel.frame = CGRectMake(110, 25, 100, 20);
+    _timeStampLabel.frame = CGRectMake(200, 25, 120, 20);
     
 }
 

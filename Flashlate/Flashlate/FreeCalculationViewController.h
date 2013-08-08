@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FreeSettingViewController.h"
 #import "FreeAnswerViewController.h"
 
 @interface FreeCalculationViewController : UIViewController
@@ -27,6 +28,7 @@
 @property(nonatomic)BOOL timeflg;
 @property(nonatomic)BOOL startInput;
 @property(nonatomic)int chk_num;    // 重複チェック
+@property(nonatomic)int backSwipe;    // swipeで戻る
 
 - (void)startDidPush;
 - (void)DidStart;

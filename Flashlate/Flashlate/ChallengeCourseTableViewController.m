@@ -32,6 +32,13 @@
     [super viewDidLoad];
     speed = 10;
     
+    // speedSegカスタマイズ
+    speedSeg.selectedFontColor = [UIColor cloudsColor];
+    speedSeg.deselectedFontColor = [UIColor blackColor];
+    speedSeg.selectedColor = [UIColor orangeColor];
+    speedSeg.deselectedColor = [UIColor cloudsColor];
+    speedSeg.dividerColor = [UIColor midnightBlueColor];
+    speedSeg.cornerRadius = 5.0;
     
 }
 

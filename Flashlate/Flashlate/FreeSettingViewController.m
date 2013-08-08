@@ -8,6 +8,7 @@
 
 #import "FreeSettingViewController.h"
 
+
 @interface FreeSettingViewController ()
 
 @end
@@ -33,6 +34,44 @@
     digit = 1;
     problem = 2;
     speed = 10;
+    
+    // lblカスタマイズ
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"lblStart" ofType:@"png"];
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
+    lbl_start.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    
+    // btnカスタマイズ
+    //startBtn.faceColor = [UIColor colorWithRed:86.0/255.0 green:161.0/255.0 blue:217.0/255.0 alpha:1.0];
+    startBtn.faceColor = RGB(52, 152, 219);
+    startBtn.sideColor = [UIColor colorWithRed:79.0/255.0 green:127.0/255.0 blue:179.0/255.0 alpha:1.0];
+    startBtn.radius = 8.0;
+    startBtn.margin = 4.0;
+    startBtn.depth = 8.0;
+    
+    // segmentカスタマイズ
+    digitSeg.selectedFontColor = [UIColor cloudsColor];
+    digitSeg.deselectedFontColor = [UIColor blackColor];
+    digitSeg.selectedColor = [UIColor orangeColor];
+    digitSeg.deselectedColor = [UIColor cloudsColor];
+    digitSeg.dividerColor = [UIColor midnightBlueColor];
+    digitSeg.cornerRadius = 5.0;
+    
+    problemSeg.selectedFontColor = [UIColor cloudsColor];
+    problemSeg.deselectedFontColor = [UIColor blackColor];
+    problemSeg.selectedColor = [UIColor orangeColor];
+    problemSeg.deselectedColor = [UIColor cloudsColor];
+    problemSeg.dividerColor = [UIColor midnightBlueColor];
+    problemSeg.cornerRadius = 5.0;
+    
+    speedSeg.selectedFontColor = [UIColor cloudsColor];
+    speedSeg.deselectedFontColor = [UIColor blackColor];
+    speedSeg.selectedColor = [UIColor orangeColor];
+    speedSeg.deselectedColor = [UIColor cloudsColor];
+    speedSeg.dividerColor = [UIColor midnightBlueColor];
+    speedSeg.cornerRadius = 5.0;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

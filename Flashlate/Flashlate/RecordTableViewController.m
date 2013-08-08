@@ -44,6 +44,8 @@
     course_flg=1;
     rank=1;
 
+    myTableView.rowHeight = 60.0;
+    
     items = [[NSArray alloc]initWithObjects:@"1位", @"2位", @"3位", @"4位", @"5位", @"6位", @"7位", @"8位", @"9位", @"10位", nil];
 }
 
@@ -107,14 +109,14 @@
     //recordCell.rankLabel.text = [NSString stringWithFormat:@"%d位", rank];
     recordCell.rankLabel.text = [items objectAtIndex:indexPath.row];
     recordCell.rankLabel.textAlignment = NSTextAlignmentCenter;
-    recordCell.rankLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
+    recordCell.rankLabel.font = [UIFont fontWithName:@"Arial" size:20];
     recordCell.rankLabel.textColor = rankColor;
     
     // judge
     UIColor *judgeColor;
     judge = record.judge;
     judgeColor = [UIColor blackColor];
-    recordCell.judgeLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
+    recordCell.judgeLabel.font = [UIFont fontWithName:@"Arial" size:20];
     recordCell.judgeLabel.textAlignment = NSTextAlignmentCenter;
     recordCell.judgeLabel.text = judge;
     recordCell.judgeLabel.textColor = judgeColor;
@@ -123,7 +125,7 @@
     UIColor *pointColor;
     point = [record.point intValue];
     pointColor = [UIColor blackColor];
-    recordCell.pointLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
+    recordCell.pointLabel.font = [UIFont fontWithName:@"Arial" size:20];
     recordCell.pointLabel.textAlignment = NSTextAlignmentCenter;
     recordCell.pointLabel.text = [NSString stringWithFormat:@"%d pt.", point];
     recordCell.pointLabel.textColor = pointColor;
@@ -132,7 +134,7 @@
     UIColor *dataColor;
     timeStamp = record.timeStamp;
     dataColor = [UIColor blackColor];
-    recordCell.timeStampLable.font = [UIFont fontWithName:@"Helvetica" size:15];
+    recordCell.timeStampLable.font = [UIFont fontWithName:@"Arial" size:20];
     recordCell.timeStampLable.textAlignment = NSTextAlignmentCenter;
     recordCell.timeStampLable.text = timeStamp;
     recordCell.timeStampLable.textColor = dataColor;

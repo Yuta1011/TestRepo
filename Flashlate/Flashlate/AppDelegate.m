@@ -77,7 +77,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    sleep(1);
+    
+    UIImage *image = [UIImage imageNamed:@"FlashLate_FlatNavi.png"];
+    [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    //[[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.80 green:0.71 blue:0.51 alpha:1.0]];
+    [[UINavigationBar appearance] setTintColor:RGB(46, 204, 113)];
+    //[[UITabBar appearance] setTintColor:RGB(46, 204, 113)];
+    /*
+    UIImage *image2 = [UIImage imageNamed:@"tabbar_background.png"];
+    UIImage *image3= [UIImage imageNamed:@"tabbar_in.png"];
+    [[UITabBar appearance] setBackgroundImage:image2];
+    [[UITabBar appearance] setSelectionIndicatorImage:image3];
+    */
+    
+    sleep(2);
     return YES;
 }
 							
