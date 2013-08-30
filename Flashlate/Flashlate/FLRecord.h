@@ -17,6 +17,11 @@
 @property (nonatomic, retain) NSString * identifier;
 @property (nonatomic, retain) NSString * timeStamp;
 @property (nonatomic, retain) NSString * judge;
+@property (nonatomic, retain) NSString * restTime;
+@property (nonatomic, retain) NSNumber * rightCnt;
+@property (nonatomic, retain) NSNumber * wrongCnt;
+@property (nonatomic, retain) NSNumber * maxCombo;
+
 
 
 

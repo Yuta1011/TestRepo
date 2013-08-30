@@ -16,6 +16,10 @@
 @dynamic identifier;
 @dynamic timeStamp;
 @dynamic judge;
+@dynamic restTime;
+@dynamic rightCnt;
+@dynamic wrongCnt;
+@dynamic maxCombo;
 
 
 @end

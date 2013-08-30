@@ -175,6 +175,19 @@
     FAnswerViewController.speed = speed;
     
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"viewWillDisappear");
+    [super viewWillDisappear:animated];
+    
+    [timer invalidate];
+    timeflg = FALSE;
+    
+    //[self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 - (IBAction)swipeHandleGesture:(id)sender {
     
     // swipeで戻る

@@ -31,6 +31,11 @@
                                 <action selector="changedSeg:" destination="Gvj-Go-9rY" eventType="valueChanged" id="2SF-wu-SZ9"/>
                             </connections>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="グラフ" id="ohD-Ip-Wr2">
+                            <connections>
+                                <segue destination="NU8-9f-Pxc" kind="push" identifier="Graph" id="wBv-lm-BfB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="6rT-ic-6Xy" id="yEA-BC-xDg"/>
@@ -38,260 +43,113 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49Y-Yn-69B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1907" y="739"/>
+            <point key="canvasLocation" x="1898" y="971"/>
         </scene>
-        <!--Challenge Course Table View Controller-->
-        <scene sceneID="jkk-d2-KTS">
+        <!--Record Graph View Controller-->
+        <scene sceneID="G0H-oR-bT6">
             <objects>
-                <tableViewController id="hBp-Qa-diL" customClass="ChallengeCourseTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lJg-YR-uiY">
+                <viewController id="NU8-9f-Pxc" customClass="RecordGraphViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ei8-Dy-hzZ">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection headerTitle="難易度" id="gHs-fh-VDU">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="65" id="ANt-Jv-k4l">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="67"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="64"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="EQG-Dx-bA8" customClass="FUISegmentedControl">
-                                                    <rect key="frame" x="20" y="10" width="260" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <segments>
-                                                        <segment title="易"/>
-                                                        <segment title="普通"/>
-                                                        <segment title="難"/>
-                                                    </segments>
-                                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <connections>
-                                                        <action selector="speedSegChange:" destination="hBp-Qa-diL" eventType="valueChanged" id="A4f-mh-QvT"/>
-                                                    </connections>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="初級コース(1桁5ステージ)" id="n5E-J3-7zk">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="sjf-Ob-Pqg">
-                                        <rect key="frame" x="0.0" y="159" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1桁5問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="udt-u2-8EK">
-                                                    <rect key="frame" x="100" y="10" width="80" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="smV-1Z-nrA" kind="push" identifier="1-1" id="P4j-fC-KVP"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="89z-PT-uRw">
-                                        <rect key="frame" x="0.0" y="204" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1桁7問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h8z-WW-BCn">
-                                                    <rect key="frame" x="100" y="10" width="80" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="smV-1Z-nrA" kind="push" identifier="1-2" id="iSg-d1-HDL"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XKy-90-PBh">
-                                        <rect key="frame" x="0.0" y="248" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1桁10問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qbU-Y2-5v6">
-                                                    <rect key="frame" x="100" y="10" width="80" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="smV-1Z-nrA" kind="push" identifier="1-3" id="1aG-zd-Qvn"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="中級コース(1~2桁5ステージ)" id="r7n-5G-cb9">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bMP-cf-uAW">
-                                        <rect key="frame" x="0.0" y="339" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1~2桁5問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oD5-Xc-4p2">
-                                                    <rect key="frame" x="107" y="10" width="86" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="smV-1Z-nrA" kind="push" identifier="2-1" id="Fh5-RT-HNo"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QGA-p2-DBc">
-                                        <rect key="frame" x="0.0" y="384" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1~2桁7問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sk6-LR-fNf">
-                                                    <rect key="frame" x="107" y="10" width="86" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="smV-1Z-nrA" kind="push" identifier="2-2" id="1sv-DJ-cgm"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="EDs-fl-GB9">
-                                        <rect key="frame" x="0.0" y="428" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1~2桁10問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b2Z-Id-mxU">
-                                                    <rect key="frame" x="102" y="10" width="97" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="smV-1Z-nrA" kind="push" identifier="2-3" id="GoA-3i-duq"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="上級コース(2桁5ステージ)" id="RBo-0m-iPI">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dxP-hJ-QWX">
-                                        <rect key="frame" x="0.0" y="519" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2桁5問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iZ7-Y7-3UD">
-                                                    <rect key="frame" x="110" y="10" width="80" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="smV-1Z-nrA" kind="push" identifier="3-1" id="ad8-GH-jUn"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="IoT-Yc-2iB">
-                                        <rect key="frame" x="0.0" y="564" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2桁7問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4kv-it-QuT">
-                                                    <rect key="frame" x="110" y="10" width="80" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="smV-1Z-nrA" kind="push" identifier="3-2" id="Rko-9f-r1I"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="WZU-cX-4Dc">
-                                        <rect key="frame" x="0.0" y="608" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2桁10問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SlS-BB-O2P">
-                                                    <rect key="frame" x="110" y="10" width="80" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <segue destination="smV-1Z-nrA" kind="push" identifier="3-3" id="6qD-19-KCt"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="hBp-Qa-diL" id="XNK-i8-g2L"/>
-                            <outlet property="delegate" destination="hBp-Qa-diL" id="1dQ-vD-lqQ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Zzu-L7-9Up" customClass="Challenge"/>
-                    <connections>
-                        <outlet property="speedSeg" destination="EQG-Dx-bA8" id="Tf3-a2-Hb0"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WE2-ZA-MSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="週間記録" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sfB-SJ-Iyl">
+                                <rect key="frame" x="85" y="8" width="150" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0P9-ar-K2g">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="qWe-hR-tl1">
+                            <rect key="frame" x="85" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="初級"/>
+                                <segment title="中級"/>
+                                <segment title="上級"/>
+                            </segments>
+                            <connections>
+                                <action selector="segDidChange:" destination="NU8-9f-Pxc" eventType="valueChanged" id="wzF-9W-YAi"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f4r-LX-Bid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="164"/>
+            <point key="canvasLocation" x="2313" y="971"/>
+        </scene>
+        <!--Challenge Select View Controller-->
+        <scene sceneID="xcj-wg-ztL">
+            <objects>
+                <viewController id="3np-LX-wAK" customClass="ChallengeSelectViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sVS-qJ-Exy">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="paB-AY-a0M" customClass="QBFlatButton">
+                                <rect key="frame" x="20" y="22" width="280" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
+                                <state key="normal" title="初級 ">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="smV-1Z-nrA" kind="push" identifier="Easy" id="j04-LM-n2t"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zjq-9d-Ojx" customClass="QBFlatButton">
+                                <rect key="frame" x="20" y="144" width="280" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
+                                <state key="normal" title="???">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnNormalPush:" destination="3np-LX-wAK" eventType="touchUpInside" id="Rh4-Cr-hYI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4SV-uf-OC6" customClass="QBFlatButton">
+                                <rect key="frame" x="20" y="265" width="280" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
+                                <state key="normal" title="???">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnHardPush:" destination="3np-LX-wAK" eventType="touchUpInside" id="YWt-Rk-akI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Nja-iz-eRH"/>
+                    <connections>
+                        <outlet property="btn_easy" destination="paB-AY-a0M" id="uCj-xx-Yzn"/>
+                        <outlet property="btn_hard" destination="4SV-uf-OC6" id="jGO-7g-0Nv"/>
+                        <outlet property="btn_normal" destination="Zjq-9d-Ojx" id="Y5n-Bs-rC3"/>
+                        <segue destination="smV-1Z-nrA" kind="push" identifier="Normal" id="Xiu-SF-KYk"/>
+                        <segue destination="smV-1Z-nrA" kind="push" identifier="Hard" id="yNV-Po-nIH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VDU-Ze-fJX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1906" y="264"/>
         </scene>
         <!--Challenge Calculation View Controller-->
         <scene sceneID="bal-dO-hrd">
@@ -301,301 +159,273 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1aX-Vo-ict">
-                                <rect key="frame" x="20" y="118.5" width="280" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="150"/>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pJr-DA-z5f" customClass="QBFlatButton">
+                                <rect key="frame" x="20" y="273" width="130" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDidPush:" destination="smV-1Z-nrA" eventType="touchUpInside" id="ONA-Fw-6gO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GlR-Jb-S4X">
+                                <rect key="frame" x="35" y="281" width="100" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="flatheart.png" highlightedImage="breakHeart.png" id="N7t-N1-ig2">
-                                <rect key="frame" x="88" y="36" width="30" height="30"/>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PgY-Ut-lV4" customClass="QBFlatButton">
+                                <rect key="frame" x="170" y="273" width="130" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDidPush:" destination="smV-1Z-nrA" eventType="touchUpInside" id="a0V-gj-bhl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fpe-os-MB5">
+                                <rect key="frame" x="185" y="281" width="100" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Gs-B9-pDl" customClass="QBFlatButton">
+                                <rect key="frame" x="20" y="200" width="130" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDidPush:" destination="smV-1Z-nrA" eventType="touchUpInside" id="XkD-Vf-5NF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zQC-Cp-L1O" customClass="QBFlatButton">
+                                <rect key="frame" x="170" y="200" width="130" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDidPush:" destination="smV-1Z-nrA" eventType="touchUpInside" id="BYI-q4-3H0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7NH-Be-NhN">
+                                <rect key="frame" x="185" y="208" width="100" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JAj-Yw-aUK">
+                                <rect key="frame" x="35" y="208" width="100" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="18.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dyu-gh-85d">
+                                <rect key="frame" x="105" y="20.5" width="110" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="flatheart.png" highlightedImage="breakHeart.png" id="SJy-n0-OG2">
-                                <rect key="frame" x="145" y="36" width="30" height="30"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rio-Qt-1me">
+                                <rect key="frame" x="20" y="73" width="280" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="＋" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C3o-iE-nvQ">
+                                <rect key="frame" x="137.5" y="100.5" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="45"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="78" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dC5-vH-ASv">
+                                <rect key="frame" x="40" y="85" width="90" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="80"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="78" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SWy-3d-TpJ">
+                                <rect key="frame" x="190" y="85" width="90" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="80"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mRK-EE-66B">
+                                <rect key="frame" x="20" y="20" width="75" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="flatheart.png" highlightedImage="breakHeart.png" id="u4i-zD-X5v">
-                                <rect key="frame" x="201" y="36" width="30" height="30"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="32"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="+ 2.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aL7-WB-PDi">
+                                <rect key="frame" x="220" y="25.5" width="80" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
+                                <color key="textColor" red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8be-4X-n7W" appends="YES" id="Ah4-Bc-Jfi"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="0jm-1v-cjG">
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="image1" destination="N7t-N1-ig2" id="O5A-ZP-B3q"/>
-                        <outlet property="image2" destination="SJy-n0-OG2" id="SH9-Cf-YQi"/>
-                        <outlet property="image3" destination="u4i-zD-X5v" id="4g4-9D-3at"/>
-                        <outlet property="num_lbl" destination="1aX-Vo-ict" id="1Sw-Xn-GAd"/>
-                        <segue destination="TZ8-Ql-5TL" kind="push" identifier="Push" id="xVK-75-Bzb"/>
+                        <outlet property="btn_leftDown" destination="pJr-DA-z5f" id="gwm-Ry-F3W"/>
+                        <outlet property="btn_leftTop" destination="5Gs-B9-pDl" id="YkA-Dr-iZd"/>
+                        <outlet property="btn_rightDown" destination="PgY-Ut-lV4" id="LdF-nB-Nrw"/>
+                        <outlet property="btn_rightTop" destination="zQC-Cp-L1O" id="O9m-ku-UsW"/>
+                        <outlet property="lbl_addTime" destination="aL7-WB-PDi" id="6US-Cr-8Mb"/>
+                        <outlet property="lbl_background" destination="rio-Qt-1me" id="53V-xa-IWl"/>
+                        <outlet property="lbl_left" destination="dC5-vH-ASv" id="kG7-ge-pFL"/>
+                        <outlet property="lbl_leftDown" destination="GlR-Jb-S4X" id="oRU-ad-YeG"/>
+                        <outlet property="lbl_leftTop" destination="JAj-Yw-aUK" id="84P-xF-Nef"/>
+                        <outlet property="lbl_restTime" destination="Dyu-gh-85d" id="OTs-vU-ciW"/>
+                        <outlet property="lbl_right" destination="SWy-3d-TpJ" id="p2C-MI-jPI"/>
+                        <outlet property="lbl_rightDown" destination="fpe-os-MB5" id="cQ6-6H-9pP"/>
+                        <outlet property="lbl_rightTop" destination="7NH-Be-NhN" id="Eee-K6-hw1"/>
+                        <segue destination="HMK-zW-V9R" kind="push" identifier="Result" id="cPa-yz-0JC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1i-Ee-EKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="8be-4X-n7W">
+                    <connections>
+                        <action selector="swipeHandleGesture:" destination="smV-1Z-nrA" id="8pq-g9-HIu"/>
+                        <outlet property="delegate" destination="smV-1Z-nrA" id="1il-sg-PGw"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2268" y="164"/>
+            <point key="canvasLocation" x="2313" y="264"/>
         </scene>
-        <!--Challenge Answer View Controller - Answer-->
-        <scene sceneID="Jxs-Lh-nFE">
+        <!--Challenge Result View Controller-->
+        <scene sceneID="D6S-9Y-RnF">
             <objects>
-                <viewController storyboardIdentifier="Modal" id="e7R-tj-0dS" customClass="ChallengeAnswerViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zBO-mv-xGr">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                <viewController id="HMK-zW-V9R" customClass="ChallengeResultViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k2R-ag-V3W">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="39459334" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TVs-tk-VID">
-                                <rect key="frame" x="20" y="27" width="280" height="96"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="60"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="17000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YhN-s0-sZe">
+                                <rect key="frame" x="23" y="283" width="160" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="35"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OWf-Qi-VXw">
+                                <rect key="frame" x="21" y="187" width="81" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="36.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ygx-up-1dH">
+                                <rect key="frame" x="161" y="187" width="80" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="秒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Opc-H9-NyP">
+                                <rect key="frame" x="253" y="181" width="30" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="正解数:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ltz-Sa-v9z">
+                                <rect key="frame" x="20" y="20" width="90" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HxC-nP-h8I">
+                                <rect key="frame" x="181" y="20" width="100" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="不正解数:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="A7u-gv-qeW">
+                                <rect key="frame" x="20" y="101" width="110" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a7l-8c-mxe">
+                                <rect key="frame" x="206" y="101" width="50" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8ru-Ak-6al">
+                                <rect key="frame" x="230" y="258" width="70" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldItalicMT" family="Arial" pointSize="90"/>
+                                <color key="textColor" red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="pt." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ma8-QH-Wa0">
+                                <rect key="frame" x="192" y="295" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1JD-9Y-rX2" customClass="QBFlatButton">
-                                <rect key="frame" x="8.5" y="380" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="C">
-                                    <color key="titleColor" red="1" green="0.025458757370000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidClear:" destination="e7R-tj-0dS" eventType="touchUpInside" id="s1O-vB-ggR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dhI-rl-iUc" customClass="QBFlatButton">
-                                <rect key="frame" x="8.5" y="300" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="7">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidPush:" destination="e7R-tj-0dS" eventType="touchUpInside" id="lfE-fB-BJd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hIl-aV-4P0" customClass="QBFlatButton">
-                                <rect key="frame" x="8.5" y="220" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="4">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidPush:" destination="e7R-tj-0dS" eventType="touchUpInside" id="e55-gM-acB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="H9B-w3-KU5" customClass="QBFlatButton">
-                                <rect key="frame" x="220" y="380" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
-                                <state key="normal" title="Enter">
-                                    <color key="titleColor" red="1" green="0.025458757370000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidEnter:" destination="e7R-tj-0dS" eventType="touchUpInside" id="rnn-bK-rQD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BXb-YA-SvO" customClass="QBFlatButton">
-                                <rect key="frame" x="221.5" y="300" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="9">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidPush:" destination="e7R-tj-0dS" eventType="touchUpInside" id="uW9-h2-QWG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9JO-Nc-rnf" customClass="QBFlatButton">
-                                <rect key="frame" x="221.5" y="220" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="6">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidPush:" destination="e7R-tj-0dS" eventType="touchUpInside" id="FWM-V0-9UU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gTr-LL-y4t" customClass="QBFlatButton">
-                                <rect key="frame" x="115" y="380" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="0">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidPush:" destination="e7R-tj-0dS" eventType="touchUpInside" id="46H-8N-e7Z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qcZ-0v-iJf" customClass="QBFlatButton">
-                                <rect key="frame" x="115" y="300" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="8">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidPush:" destination="e7R-tj-0dS" eventType="touchUpInside" id="0nu-3p-cC8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TCL-9T-ohC" customClass="QBFlatButton">
-                                <rect key="frame" x="115" y="220" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="5">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidPush:" destination="e7R-tj-0dS" eventType="touchUpInside" id="eU6-HB-axQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0El-71-tgr" customClass="QBFlatButton">
-                                <rect key="frame" x="8.5" y="140" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="1">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidPush:" destination="e7R-tj-0dS" eventType="touchUpInside" id="wuc-3N-1a8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g0j-Pz-lo8" customClass="QBFlatButton">
-                                <rect key="frame" x="114.5" y="140" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="2">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidPush:" destination="e7R-tj-0dS" eventType="touchUpInside" id="zhz-9O-efT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xQ9-eI-UWu" customClass="QBFlatButton">
-                                <rect key="frame" x="221.5" y="140" width="90" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
-                                <state key="normal" title="3">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDidPush:" destination="e7R-tj-0dS" eventType="touchUpInside" id="RBk-ep-X8K"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                     </view>
-                    <navigationItem key="navigationItem" title="Answer" id="p1W-It-zfS"/>
-                    <connections>
-                        <outlet property="btn0" destination="gTr-LL-y4t" id="xll-2v-UH9"/>
-                        <outlet property="btn1" destination="0El-71-tgr" id="YUc-Bi-oKh"/>
-                        <outlet property="btn2" destination="g0j-Pz-lo8" id="Kp9-W4-TbA"/>
-                        <outlet property="btn3" destination="xQ9-eI-UWu" id="63P-YH-dDH"/>
-                        <outlet property="btn4" destination="hIl-aV-4P0" id="oBS-Wt-Kbc"/>
-                        <outlet property="btn5" destination="TCL-9T-ohC" id="8At-mr-O5j"/>
-                        <outlet property="btn6" destination="9JO-Nc-rnf" id="ZOX-Hm-gYF"/>
-                        <outlet property="btn7" destination="dhI-rl-iUc" id="04p-ni-7sA"/>
-                        <outlet property="btn8" destination="qcZ-0v-iJf" id="hJo-7A-AV3"/>
-                        <outlet property="btn9" destination="BXb-YA-SvO" id="ieq-aR-8gd"/>
-                        <outlet property="btn_clear" destination="1JD-9Y-rX2" id="Mcq-gM-E46"/>
-                        <outlet property="btn_enter" destination="H9B-w3-KU5" id="A3H-nw-B06"/>
-                        <outlet property="input_lbl" destination="TVs-tk-VID" id="6YX-yt-ABS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yyw-Zy-Tw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2631" y="164"/>
-        </scene>
-        <!--Challenge Record Table View Controller-->
-        <scene sceneID="9cm-gZ-ehA">
-            <objects>
-                <tableViewController id="TZ8-Ql-5TL" customClass="ChallengeRecordTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="swe-vY-VPo">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="HM1-AN-VP9">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="TZ8-Ql-5TL" id="hza-df-GmQ"/>
-                            <outlet property="delegate" destination="TZ8-Ql-5TL" id="QMl-1U-8ZN"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="JIY-Vo-2di">
-                        <barButtonItem key="rightBarButtonItem" title="TOPへ戻る" id="D64-mu-eSB">
+                    <navigationItem key="navigationItem" id="pDq-U3-xHw">
+                        <barButtonItem key="rightBarButtonItem" title="Top" id="r12-5J-azE">
                             <connections>
-                                <action selector="btnReturnTop:" destination="TZ8-Ql-5TL" id="EXw-BO-T2D"/>
+                                <action selector="btnReturnTop:" destination="HMK-zW-V9R" id="jUO-nV-p4c"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="myTableView" destination="swe-vY-VPo" id="VTM-4L-w9u"/>
+                        <outlet property="lbl_judge" destination="8ru-Ak-6al" id="k8q-YP-EQP"/>
+                        <outlet property="lbl_point" destination="YhN-s0-sZe" id="maj-PZ-Z4o"/>
+                        <outlet property="lbl_restTime" destination="ygx-up-1dH" id="Q5I-bv-FNZ"/>
+                        <outlet property="lbl_right" destination="HxC-nP-h8I" id="gAw-Kc-LkV"/>
+                        <outlet property="lbl_wrong" destination="a7l-8c-mxe" id="Fvx-nc-1Mt"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g7j-A2-s3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dha-Wq-K63" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2799" y="753"/>
+            <point key="canvasLocation" x="2694" y="264"/>
         </scene>
         <!--Free Setting View Controller-->
         <scene sceneID="rFl-9v-VLs">
@@ -607,38 +437,17 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6PJ-yd-DMJ" customClass="QBFlatButton">
                                 <rect key="frame" x="20" y="290" width="280" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="35"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="PushStart:" destination="o64-pT-7f2" eventType="touchUpInside" id="D9h-jv-9r1"/>
-                                    <segue destination="ZSH-EI-OVZ" kind="push" id="zwT-Zu-4hp"/>
+                                    <action selector="btnDidPush:" destination="o64-pT-7f2" eventType="touchUpInside" id="r5f-DN-YEa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="桁数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aII-nZ-Zvp">
-                                <rect key="frame" x="130" y="20" width="61" height="20"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="問題数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gZS-ck-Vjb">
-                                <rect key="frame" x="130" y="105" width="61" height="20"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="速度" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dZk-X9-Gwq">
-                                <rect key="frame" x="130" y="189" width="61" height="24"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="bs4-Tc-RA9" customClass="FUISegmentedControl">
-                                <rect key="frame" x="20" y="48" width="280" height="44"/>
+                                <rect key="frame" x="20" y="20" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="1桁"/>
@@ -651,8 +460,8 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="dNI-nF-Sxd" customClass="FUISegmentedControl">
-                                <rect key="frame" x="20" y="133" width="280" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="20" y="151" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="2問"/>
                                     <segment title="3"/>
@@ -665,32 +474,42 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" id="fZJ-5M-1Z3" customClass="FUISegmentedControl">
-                                <rect key="frame" x="20" y="221" width="280" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <rect key="frame" x="20" y="85" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <segments>
-                                    <segment title="最速"/>
-                                    <segment title="速"/>
-                                    <segment title="普"/>
-                                    <segment title="遅"/>
                                     <segment title="最遅"/>
+                                    <segment title="遅"/>
+                                    <segment title="普通"/>
+                                    <segment title="速"/>
+                                    <segment title="最速"/>
                                 </segments>
                                 <connections>
                                     <action selector="speedSegChange:" destination="o64-pT-7f2" eventType="valueChanged" id="CQc-T4-IZA"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Dt-VZ-STV">
+                                <rect key="frame" x="20" y="212.5" width="280" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="55"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="gpg-yt-g8f"/>
                     <connections>
+                        <outlet property="btn_start" destination="6PJ-yd-DMJ" id="39U-10-gL4"/>
                         <outlet property="digitSeg" destination="bs4-Tc-RA9" id="34d-9j-1vF"/>
+                        <outlet property="lbl_num" destination="6Dt-VZ-STV" id="4S2-pq-doE"/>
                         <outlet property="problemSeg" destination="dNI-nF-Sxd" id="d4w-v5-ccG"/>
                         <outlet property="speedSeg" destination="fZJ-5M-1Z3" id="RRX-ZA-MdC"/>
+                        <segue destination="ZSH-EI-OVZ" kind="push" identifier="Push" id="hQb-0u-oQk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvU-cE-fJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="-404"/>
+            <point key="canvasLocation" x="1892" y="-456"/>
         </scene>
         <!--Free Calculation View Controller-->
         <scene sceneID="pUo-J1-Y5X">
@@ -699,14 +518,14 @@
                     <view key="view" contentMode="scaleToFill" id="Imo-SG-ljO">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R6T-i7-QE4">
-                                <rect key="frame" x="20" y="106.5" width="280" height="150"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R6T-i7-QE4">
+                                <rect key="frame" x="20" y="97" width="280" height="173"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="150"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="120"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="T6c-2T-FYl" appends="YES" id="X5U-Tv-rEw"/>
@@ -726,7 +545,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2261" y="-404"/>
+            <point key="canvasLocation" x="2261" y="-456"/>
         </scene>
         <!--Free Answer View Controller-->
         <scene sceneID="DF6-Wn-KNH">
@@ -737,9 +556,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sng-CK-z1h" customClass="QBFlatButton">
-                                <rect key="frame" x="8.5" y="300" width="90" height="60"/>
+                                <rect key="frame" x="8" y="297" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="35"/>
                                 <state key="normal" title="C">
                                     <color key="titleColor" red="1" green="0.025458757370000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -752,7 +571,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xFP-3x-Cs2" customClass="QBFlatButton">
-                                <rect key="frame" x="8.5" y="160" width="90" height="60"/>
+                                <rect key="frame" x="8" y="157" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
                                 <state key="normal" title="4">
@@ -767,7 +586,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KNT-VA-Iwl" customClass="QBFlatButton">
-                                <rect key="frame" x="8.5" y="230" width="90" height="60"/>
+                                <rect key="frame" x="8" y="227" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
                                 <state key="normal" title="7">
@@ -782,7 +601,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="64w-3n-JOo" customClass="QBFlatButton">
-                                <rect key="frame" x="221.5" y="230" width="90" height="60"/>
+                                <rect key="frame" x="221" y="227" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
                                 <state key="normal" title="9">
@@ -797,7 +616,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hsz-cj-Tst" customClass="QBFlatButton">
-                                <rect key="frame" x="221.5" y="160" width="90" height="60"/>
+                                <rect key="frame" x="221" y="157" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
                                 <state key="normal" title="6">
@@ -812,9 +631,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gjW-br-Eux" customClass="QBFlatButton">
-                                <rect key="frame" x="221.5" y="300" width="90" height="60"/>
+                                <rect key="frame" x="221" y="297" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
                                 <state key="normal" title="Enter">
                                     <color key="titleColor" red="1" green="0.025458757370000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -827,7 +646,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OWe-MD-9de" customClass="QBFlatButton">
-                                <rect key="frame" x="115" y="160" width="90" height="60"/>
+                                <rect key="frame" x="115" y="157" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
                                 <state key="normal" title="5">
@@ -842,7 +661,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Mi9-Qh-wVq" customClass="QBFlatButton">
-                                <rect key="frame" x="115" y="230" width="90" height="60"/>
+                                <rect key="frame" x="115" y="227" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
                                 <state key="normal" title="8">
@@ -857,7 +676,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Vb0-jS-crJ" customClass="QBFlatButton">
-                                <rect key="frame" x="115" y="300" width="90" height="60"/>
+                                <rect key="frame" x="115" y="297" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <state key="normal" title="0">
@@ -872,7 +691,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qyw-cv-kNx" customClass="QBFlatButton">
-                                <rect key="frame" x="8.5" y="90" width="90" height="60"/>
+                                <rect key="frame" x="8" y="87" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
                                 <state key="normal" title="1">
@@ -887,7 +706,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kbL-Ev-H9j" customClass="QBFlatButton">
-                                <rect key="frame" x="221.5" y="90" width="90" height="60"/>
+                                <rect key="frame" x="221" y="87" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
                                 <state key="normal" title="3">
@@ -902,7 +721,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hH1-Os-CmQ" customClass="QBFlatButton">
-                                <rect key="frame" x="115" y="90" width="90" height="60"/>
+                                <rect key="frame" x="115" y="87" width="90" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
                                 <state key="normal" title="2">
@@ -916,8 +735,8 @@
                                     <action selector="btnDidPush:" destination="2Jt-tE-cfw" eventType="touchUpInside" id="g9s-HF-x4y"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3459345" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Bt-GF-jx8">
-                                <rect key="frame" x="20" y="10" width="280" height="72"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="35354" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Bt-GF-jx8">
+                                <rect key="frame" x="80" y="8.5" width="220" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="60"/>
@@ -955,7 +774,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2617" y="-404"/>
+            <point key="canvasLocation" x="2617" y="-456"/>
         </scene>
         <!--Navigation Controller - Free-->
         <scene sceneID="nCc-xk-g10">
@@ -974,26 +793,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubf-4x-Gf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="-404"/>
-        </scene>
-        <!--Navigation Controller - Challenge-->
-        <scene sceneID="SM8-Md-v4Q">
-            <objects>
-                <navigationController id="yMg-F5-u06" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Challenge" image="fire_02.png" id="NDo-43-9wc"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vo5-ut-Fti">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="hBp-Qa-diL" kind="relationship" relationship="rootViewController" id="gUc-3e-ttN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U44-RL-7PG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1541" y="164"/>
+            <point key="canvasLocation" x="1532" y="-456"/>
         </scene>
         <!--Navigation Controller - Record-->
         <scene sceneID="LvH-6x-8HL">
@@ -1012,7 +812,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0b9-Zn-jEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1541" y="739"/>
+            <point key="canvasLocation" x="1532" y="971"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="BpW-VC-rKG">
@@ -1026,7 +826,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="8Ud-E6-rnk" kind="relationship" relationship="viewControllers" id="BE3-hE-jw6"/>
-                        <segue destination="yMg-F5-u06" kind="relationship" relationship="viewControllers" id="KqT-4F-cZO"/>
+                        <segue destination="4Ko-Lo-ZtR" kind="relationship" relationship="viewControllers" id="5NS-Bz-Op8"/>
                         <segue destination="YAl-CP-ZvU" kind="relationship" relationship="viewControllers" id="vhP-sp-VgN"/>
                     </connections>
                 </tabBarController>
@@ -1034,57 +834,74 @@
             </objects>
             <point key="canvasLocation" x="949" y="164"/>
         </scene>
+        <!--Navigation Controller - Challenge-->
+        <scene sceneID="YQD-71-bFl">
+            <objects>
+                <navigationController id="4Ko-Lo-ZtR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Challenge" image="fire_02.png" id="wfQ-CH-NxS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jkA-DG-SCz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3np-LX-wAK" kind="relationship" relationship="rootViewController" id="ng6-eR-qj2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FYr-Bx-maI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1532" y="264"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="breakHeart.png" width="30" height="27"/>
         <image name="clapboard.png" width="26" height="26"/>
         <image name="fire_02.png" width="26" height="26"/>
-        <image name="flatheart.png" width="30" height="30"/>
         <image name="graph_bar.png" width="26" height="26"/>
     </resources>
     <classes>
-        <class className="ChallengeAnswerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChallengeAnswerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnDidClear:"/>
-                <relationship kind="action" name="btnDidEnter:"/>
-                <relationship kind="action" name="btnDidPush:"/>
-                <relationship kind="outlet" name="btn0" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn1" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn2" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn3" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn4" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn5" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn6" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn7" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn8" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn9" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn_clear" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="btn_enter" candidateClass="QBFlatButton"/>
-                <relationship kind="outlet" name="input_lbl" candidateClass="UILabel"/>
-            </relationships>
-        </class>
         <class className="ChallengeCalculationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChallengeCalculationViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="image1" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="image2" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="image3" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="num_lbl" candidateClass="UILabel"/>
+                <relationship kind="action" name="btnDidPush:"/>
+                <relationship kind="action" name="swipeHandleGesture:"/>
+                <relationship kind="outlet" name="btn_leftDown" candidateClass="QBFlatButton"/>
+                <relationship kind="outlet" name="btn_leftTop" candidateClass="QBFlatButton"/>
+                <relationship kind="outlet" name="btn_rightDown" candidateClass="QBFlatButton"/>
+                <relationship kind="outlet" name="btn_rightTop" candidateClass="QBFlatButton"/>
+                <relationship kind="outlet" name="lbl_addTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_background" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_combo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_left" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_leftDown" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_leftTop" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_restTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_right" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_rightDown" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_rightTop" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="ChallengeCourseTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChallengeCourseTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="speedSegChange:"/>
-                <relationship kind="outlet" name="speedSeg" candidateClass="FUISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="ChallengeRecordTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChallengeRecordTableViewController.h"/>
+        <class className="ChallengeResultViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChallengeResultViewController.h"/>
             <relationships>
                 <relationship kind="action" name="btnReturnTop:"/>
-                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+                <relationship kind="action" name="swipeHandleGesture:"/>
+                <relationship kind="outlet" name="lbl_combo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_judge" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_point" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_restTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_right" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_wrong" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChallengeSelectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChallengeSelectViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnHardPush:"/>
+                <relationship kind="action" name="btnNormalPush:"/>
+                <relationship kind="outlet" name="btn_easy" candidateClass="QBFlatButton"/>
+                <relationship kind="outlet" name="btn_hard" candidateClass="QBFlatButton"/>
+                <relationship kind="outlet" name="btn_normal" candidateClass="QBFlatButton"/>
             </relationships>
         </class>
         <class className="FUISegmentedControl" superclassName="UISegmentedControl">
@@ -1093,10 +910,6 @@
         <class className="FreeAnswerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FreeAnswerViewController.h"/>
             <relationships>
-                <relationship kind="action" name="btnDidClear:"/>
-                <relationship kind="action" name="btnDidEnter:"/>
-                <relationship kind="action" name="btnDidPush:"/>
-                <relationship kind="action" name="swipeHandleGesture:"/>
                 <relationship kind="outlet" name="btn0" candidateClass="QBFlatButton"/>
                 <relationship kind="outlet" name="btn1" candidateClass="QBFlatButton"/>
                 <relationship kind="outlet" name="btn2" candidateClass="QBFlatButton"/>
@@ -1122,18 +935,25 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FreeSettingViewController.h"/>
             <relationships>
                 <relationship kind="action" name="PushStart:"/>
+                <relationship kind="action" name="btnDidPush:"/>
                 <relationship kind="action" name="digitSegChange:"/>
                 <relationship kind="action" name="problemSegChange:"/>
                 <relationship kind="action" name="speedSegChange:"/>
+                <relationship kind="outlet" name="btn_start" candidateClass="QBFlatButton"/>
                 <relationship kind="outlet" name="digitSeg" candidateClass="FUISegmentedControl"/>
-                <relationship kind="outlet" name="lbl_start" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lbl_num" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="problemSeg" candidateClass="FUISegmentedControl"/>
                 <relationship kind="outlet" name="speedSeg" candidateClass="FUISegmentedControl"/>
-                <relationship kind="outlet" name="startBtn" candidateClass="QBFlatButton"/>
             </relationships>
         </class>
         <class className="QBFlatButton" superclassName="UIButton">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QBFlatButton.h"/>
+        </class>
+        <class className="RecordGraphViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordGraphViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segDidChange:"/>
+            </relationships>
         </class>
         <class className="RecordTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordTableViewController.h"/>
@@ -1149,6 +969,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1aG-zd-Qvn"/>
+        <segue reference="yNV-Po-nIH"/>
     </inferredMetricsTieBreakers>
 </document>

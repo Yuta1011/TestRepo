@@ -10,11 +10,16 @@
 
 @implementation FLRecordCell
 
-// プロパティ
 @synthesize rankLabel = _rankLabel;
 @synthesize judgeLabel = _judgeLabel;
 @synthesize pointLabel  =_pointLabel;
-@synthesize timeStampLable = _timeStampLabel;
+@synthesize timeStampLabel = _timeStampLabel;
+@synthesize rightCnt = _rightCnt;
+@synthesize wrongCnt = _wrongCnt;
+@synthesize maxCombo = _maxCombo;
+@synthesize restTime = _restTime;
+@synthesize judgeRankLabel = _judgeRankLabel;
+@synthesize timeLabel = _timeLabel;
 
 
 //--------------------------------------------------------------//
@@ -31,9 +36,9 @@
     
     // rank
     _rankLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _rankLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    _rankLabel.font = [UIFont boldSystemFontOfSize:40.0f];
     _rankLabel.textColor = [UIColor blackColor];
-    _rankLabel.highlightedTextColor = [UIColor whiteColor];
+    _rankLabel.backgroundColor = [UIColor clearColor];
     _rankLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:_rankLabel];
     
@@ -41,15 +46,23 @@
     _judgeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _judgeLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     _judgeLabel.textColor = [UIColor blackColor];
-    _judgeLabel.highlightedTextColor = [UIColor whiteColor];
+    _judgeLabel.backgroundColor = [UIColor clearColor];
     _judgeLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:_judgeLabel];
+    
+    // judgeRank
+    _judgeRankLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _judgeRankLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    _judgeRankLabel.textColor = [UIColor blackColor];
+    _judgeRankLabel.backgroundColor = [UIColor clearColor];
+    _judgeRankLabel.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:_judgeRankLabel];
     
     // point
     _pointLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _pointLabel.font = [UIFont systemFontOfSize:16.0f];
     _pointLabel.textColor = [UIColor blackColor];
-    _pointLabel.highlightedTextColor = [UIColor whiteColor];
+    _pointLabel.backgroundColor = [UIColor clearColor];
     _pointLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:_pointLabel];
     
@@ -60,6 +73,46 @@
     _timeStampLabel.backgroundColor = [UIColor clearColor];
     _timeStampLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:_timeStampLabel];
+    
+    // restTime
+    _restTime = [[UILabel alloc] initWithFrame:CGRectZero];
+    _restTime.font = [UIFont boldSystemFontOfSize:16.0f];
+    _restTime.textColor = [UIColor blackColor];
+    _restTime.backgroundColor = [UIColor clearColor];
+    _restTime.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:_restTime];
+    
+    // timeLabel
+    _timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _timeLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    _timeLabel.textColor = [UIColor blackColor];
+    _timeLabel.backgroundColor = [UIColor clearColor];
+    _timeLabel.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:_timeLabel];
+    
+    // rightCnt
+    _rightCnt = [[UILabel alloc] initWithFrame:CGRectZero];
+    _rightCnt.font = [UIFont boldSystemFontOfSize:16.0f];
+    _rightCnt.textColor = [UIColor blackColor];
+    _rightCnt.backgroundColor = [UIColor clearColor];
+    _rightCnt.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:_rightCnt];
+    
+    // wrongCnt
+    _wrongCnt = [[UILabel alloc] initWithFrame:CGRectZero];
+    _wrongCnt.font = [UIFont boldSystemFontOfSize:16.0f];
+    _wrongCnt.textColor = [UIColor blackColor];
+    _wrongCnt.backgroundColor = [UIColor clearColor];
+    _wrongCnt.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:_wrongCnt];
+    
+    // maxCombo
+    _maxCombo = [[UILabel alloc] initWithFrame:CGRectZero];
+    _maxCombo.font = [UIFont boldSystemFontOfSize:16.0f];
+    _maxCombo.textColor = [UIColor blackColor];
+    _maxCombo.backgroundColor = [UIColor clearColor];
+    _maxCombo.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:_maxCombo];
         
     return self;
 }
@@ -112,11 +165,23 @@
     // 親クラスのメソッドを呼び出す
     [super layoutSubviews];
     
-    _rankLabel.frame = CGRectMake(5, 25, 50, 20);
-    _judgeLabel.frame = CGRectMake(70, 25, 30, 20);
-    _pointLabel.frame = CGRectMake(110, 25, 100, 20);
-    _timeStampLabel.frame = CGRectMake(200, 25, 120, 20);
+    _rankLabel.frame = CGRectMake(5, 17, 45, 20);
+    _judgeLabel.frame = CGRectMake(50, 17, 30, 20);
+    _judgeRankLabel.frame = CGRectMake(75, 17, 40, 20);
+    _timeLabel.frame = CGRectMake(110, 17, 60, 20);
+    _restTime.frame = CGRectMake(160, 17, 50, 20);
+    _pointLabel.frame = CGRectMake(180, 17, 180, 20);
     
+    /*
+    _rightCnt.frame = CGRectMake(50, 20, 70, 25);
+    _wrongCnt.frame = CGRectMake(120, 20, 70, 25);
+    _maxCombo.frame = CGRectMake(190, 20, 130, 25);
+    
+    
+    _timeStampLabel.frame = CGRectMake(50, 60, 110, 25);
+    */
 }
+
+
 
 @end

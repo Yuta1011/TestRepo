@@ -11,6 +11,7 @@
 #import "FreeCalculationViewController.h"
 #import "QBFlatButton.h"
 #import "Global.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface FreeAnswerViewController : UIViewController
 {
@@ -21,6 +22,8 @@
     BOOL startInput;
     NSString *input_value;
     NSString *answer_value;
+    
+    AVAudioPlayer *bgm;
     
     int len;
     
@@ -37,8 +40,12 @@
     IBOutlet QBFlatButton *btn_clear;
     IBOutlet QBFlatButton *btn_enter;
     
-    UILabel *right_lbl;
+    UILabel *correct_lbl;
+    UILabel *incorrect_lbl;
+    
     UILabel *rightAns_lbl;
+    UILabel *judgeRight_lbl;
+    UILabel *judgeWrong_lbl;
     
     QBFlatButton *again_btn;
     QBFlatButton *level_btn;

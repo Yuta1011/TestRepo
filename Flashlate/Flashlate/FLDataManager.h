@@ -12,6 +12,10 @@
 @interface FLDataManager : NSObject
 {
     NSManagedObjectContext* _managedObjectContext;
+    
+    
+    NSDate *date;
+    NSString *timeDate;
 }
 
 // プロパティ
@@ -23,11 +27,13 @@
 + (FLDataManager*)sharedManager;
 
 // 新規追加&保存
--(void)insertJudge:(NSString *)judge point:(int)point timeStamp:(NSString*)timeStamp course_flg:(int)course_flg;
+//-(void)insertJudge:(NSString *)judge point:(int)point timeStamp:(NSString*)timeStamp course_flg:(int)course_flg;
+-(void)insertJudge:(NSString*)judge point:(int)point timeStamp:(NSString*)timeStamp course_flg:(int)course_flg restTime:(NSString*)restTime rightCnt:(int)rightCnt wrongCnt:(int)wrongCnt maxCombo:(int)maxCombo;
+
 
 //　データの取得
 -(NSArray *)selectedRecords:(int)course_flg;
-
+-(NSArray *)selectedTimeRecords:(int)course_flg;
 // カウント
 -(NSInteger)getCount;
 

@@ -21,14 +21,27 @@
     UILabel *_rankLabel;
     UILabel *_judgeLabel;
     UILabel *_pointLabel;
-    UILabel *_timeStampLable;
+    UILabel *_timeStampLabel;
+    UILabel *_restTime;
+    UILabel *_rightCnt;
+    UILabel *_wrongCnt;
+    UILabel *_maxCombo;
+    UILabel *_judgeRankLabel;
+    UILabel *_timeLabel;
+    
     
 }
 
 @property (nonatomic, retain) UILabel *rankLabel;
 @property (nonatomic, retain) UILabel *judgeLabel;
 @property (nonatomic, retain) UILabel *pointLabel;
-@property (nonatomic, retain) UILabel *timeStampLable;
+@property (nonatomic, retain) UILabel *timeStampLabel;
+@property (nonatomic, retain) UILabel *restTime;
+@property (nonatomic, retain) UILabel *rightCnt;
+@property (nonatomic, retain) UILabel *wrongCnt;
+@property (nonatomic, retain) UILabel *maxCombo;
+@property (nonatomic, retain) UILabel *judgeRankLabel;
+@property (nonatomic, retain) UILabel *timeLabel;
 
 
 

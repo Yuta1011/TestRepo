@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RecordGraphViewController.h"
+#import "Global.h"
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface RecordTableViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
 {
@@ -14,6 +18,9 @@
     IBOutlet UITableView *myTableView;
     //IBOutlet UISegmentedControl *seg;
     
+    UIPageControl *pageControl;
+    
+    AVAudioPlayer *bgm;
 }
 
 @property (nonatomic, strong)NSString *judge;
@@ -26,6 +33,11 @@
 @property (nonatomic, assign)int course_flg;
 @property (nonatomic, strong)NSArray *items;
 @property (nonatomic, assign)NSInteger recordNull;
+@property (nonatomic, strong)NSString *restTime;
+@property (nonatomic, assign)int maxCombo;
+@property (nonatomic, assign)int rightCnt;
+@property (nonatomic, assign)int wrongCnt;
+
 
 - (IBAction)changedSeg:(id)sender;
 

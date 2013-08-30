@@ -13,17 +13,23 @@
 #import "FUISegmentedControl.h"
 #import "UIFont+FlatUI.h"
 #import "UIColor+FlatUI.h"
+#import <AVFoundation/AVFoundation.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface FreeSettingViewController : UIViewController
 {
     
-    IBOutlet UILabel *lbl_start;
-    
-    IBOutlet QBFlatButton *startBtn;
+    //IBOutlet UILabel *lbl_start;
     
     IBOutlet FUISegmentedControl *digitSeg;
     IBOutlet FUISegmentedControl *problemSeg;
     IBOutlet FUISegmentedControl *speedSeg;
+    
+    IBOutlet UILabel *lbl_num;
+    
+    NSTimer *timer;
+    
+    AVAudioPlayer *bgm;
     
 }
 

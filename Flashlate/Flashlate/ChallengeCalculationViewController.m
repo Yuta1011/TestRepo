@@ -2,45 +2,58 @@
 //  ChallengeCalculationViewController.m
 //  Flashlate
 //
-//  Created by yu-yu on 13/07/23.
+//  Created by yu-yu on 13/08/21.
 //  Copyright (c) 2013年 yu-yu. All rights reserved.
 //
 
-#import "FLRecord.h"
-#import "FLDataManager.h"
 #import "ChallengeCalculationViewController.h"
 
 @interface ChallengeCalculationViewController ()
 
+@property (strong, nonatomic) IBOutlet UILabel *lbl_left;
+@property (strong, nonatomic) IBOutlet UILabel *lbl_right;
+@property (strong, nonatomic) IBOutlet UILabel *lbl_restTime;
+@property (strong, nonatomic) IBOutlet UILabel *lbl_combo;
+
+@property (strong, nonatomic) IBOutlet UILabel *lbl_leftTop;
+@property (strong, nonatomic) IBOutlet UILabel *lbl_rightTop;
+@property (strong, nonatomic) IBOutlet UILabel *lbl_leftDown;
+@property (strong, nonatomic) IBOutlet UILabel *lbl_rightDown;
+@property (strong, nonatomic) IBOutlet UILabel *lbl_background;
+
+@property (strong, nonatomic) IBOutlet UILabel *lbl_addTime;
+
+
+@property (strong, nonatomic) IBOutlet QBFlatButton *btn_leftTop;
+@property (strong, nonatomic) IBOutlet QBFlatButton *btn_rightTop;
+@property (strong, nonatomic) IBOutlet QBFlatButton *btn_leftDown;
+@property (strong, nonatomic) IBOutlet QBFlatButton *btn_rightDown;
+
+@property UILabel *lbl_judge;
+
+@property int leftNum;
+@property int rightNum;
+@property int tranCnt;
+
+@property NSTimer *timer;
+@property BOOL timeflg;
+
+
+- (IBAction)btnDidPush:(id)sender;
+- (IBAction)swipeHandleGesture:(id)sender;
+
 @end
 
 @implementation ChallengeCalculationViewController
-@synthesize num_lbl;
-@synthesize right_lbl;
-@synthesize wrong_lbl;
-@synthesize point_lbl;
-@synthesize judge_lbl;
-@synthesize fever_lbl;
-@synthesize combo_lbl;
-@synthesize record_btn;
-@synthesize digit;
-@synthesize problem;
-@synthesize speed;
-@synthesize count;
-@synthesize num;
-@synthesize sum;
-@synthesize timeflg;
-@synthesize chk_num;
-@synthesize startInput;
-@synthesize stg_cnt;
-@synthesize finish_flg;
 @synthesize right_cnt;
 @synthesize wrong_cnt;
-@synthesize combo_cnt;
+@synthesize stg_cnt;
+@synthesize sum;
+@synthesize combo;
 @synthesize point;
+@synthesize time_cnt;
+@synthesize touch_lbl;
 @synthesize max_combo;
-@synthesize judge;
-@synthesize record = _record;
 @synthesize course_flg;
 
 
@@ -56,316 +69,673 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    timeflg=FALSE;
-    [self startDidPush];
+    NSLog(@"viewDidLoad");
     
-    startInput = YES;
+    sum=0;
+    max_combo=0;
+    _timeflg=false;
     
-    // navigationBar戻る禁止
+    _lbl_addTime.hidden=YES;
+    
+    if(course_flg==1){
+        time_cnt=10.00;
+    }else if (course_flg==2){
+        time_cnt=10.00;
+    }else{
+        time_cnt=10.00;
+    }
+    
+    
+    // 角丸
+    [[_lbl_background layer] setCornerRadius:15.0];
+    [_lbl_background setClipsToBounds:YES];
+    
+    
+    _lbl_combo.hidden=YES;
     [self.navigationItem setHidesBackButton:YES];
+    
+    _lbl_judge = [[UILabel alloc] initWithFrame:CGRectMake(10,20,300,300)];
+    _lbl_judge.text = @"";
+    //_lbl_judge.textColor = [UIColor redColor];
+    _lbl_judge.textColor = RGB(231, 76, 60);
+    _lbl_judge.backgroundColor = [UIColor clearColor];
+    _lbl_judge.textAlignment = NSTextAlignmentCenter;
+    _lbl_judge.font = [UIFont fontWithName:@"Arial-BoldMT" size:480];
+    [self.view addSubview:_lbl_judge];
+    
+    // Flat
+    _btn_leftTop.faceColor = RGB(52, 152, 219);
+    _btn_leftTop.sideColor = [UIColor colorWithRed:79.0/255.0 green:127.0/255.0 blue:179.0/255.0 alpha:1.0];
+    _btn_leftTop.radius = 15.0;
+    _btn_leftTop.margin = 4.0;
+    _btn_leftTop.depth = 10.0;
+    
+    _btn_rightTop.faceColor = RGB(52, 152, 219);
+    _btn_rightTop.sideColor = [UIColor colorWithRed:79.0/255.0 green:127.0/255.0 blue:179.0/255.0 alpha:1.0];
+    _btn_rightTop.radius = 15.0;
+    _btn_rightTop.margin = 4.0;
+    _btn_rightTop.depth = 10.0;
+    
+    _btn_leftDown.faceColor = RGB(52, 152, 219);
+    _btn_leftDown.sideColor = [UIColor colorWithRed:79.0/255.0 green:127.0/255.0 blue:179.0/255.0 alpha:1.0];
+    _btn_leftDown.radius = 15.0;
+    _btn_leftDown.margin = 4.0;
+    _btn_leftDown.depth = 10.0;
+    
+    _btn_rightDown.faceColor = RGB(52, 152, 219);
+    _btn_rightDown.sideColor = [UIColor colorWithRed:79.0/255.0 green:127.0/255.0 blue:179.0/255.0 alpha:1.0];
+    _btn_rightDown.radius = 15.0;
+    _btn_rightDown.margin = 4.0;
+    _btn_rightDown.depth = 10.0;
+    
+    
+    [self didStart];
+    [self startTimer];
+    
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    _tranCnt=0;
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
--(void)startDidPush{
+-(void)startTimer{
+    _timer = [NSTimer scheduledTimerWithTimeInterval:(0.01)
+                                             target:self selector:@selector(onTimer:)
+                                           userInfo:nil repeats:YES];
+}
+
+- (void)onTimer:(NSTimer*)timer {
+    //time_cnt =[[_lbl_restTime text] floatValue];
+    time_cnt-=0.01;
+    _lbl_restTime.text = [NSString stringWithFormat:@"%.2f", time_cnt];
+    
+    if(time_cnt<=4.00){
+        _lbl_restTime.textColor = RGB(231, 76, 60);
+    }else{
+        _lbl_restTime.textColor = [UIColor blackColor];
+    }
+    
+    if(time_cnt<0){
+        time_cnt=0.00;
+        [self stopTimer];
+    }
+}
+
+-(void)stopTimer{
+    
+    _timeflg=false;
+    [_timer invalidate];
+    _tranCnt=1;
+    
+    [self performSegueWithIdentifier:@"Result" sender:self];
+    
+}
+
+-(void)didStart{
     stg_cnt++;
-    /*
-    if(stg_cnt==5){
-        self.title = @"Final Stage";
-    }else{
-        self.title = [NSString stringWithFormat:@"Stage %d", stg_cnt];
-    }
-    */
-    num_lbl.text = @"";
+    _lbl_addTime.hidden=YES;
     
-    [self performSelector:@selector(DidStart) withObject:nil afterDelay:1.0];
-}
-
--(void)DidStart{
-    count = 0;
-    sum = 0;
+    srand([[NSDate date] timeIntervalSinceReferenceDate]);
     
-    if(speed == 15){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(1.7)
-                                                 target:self selector:@selector(onTimer:)
-                                               userInfo:nil repeats:YES];
-    }else if (speed == 10){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(1.2)
-                                                 target:self selector:@selector(onTimer:)
-                                               userInfo:nil repeats:YES];
-    }else if (speed == 5){
-        timer = [NSTimer scheduledTimerWithTimeInterval:(0.7)
-                                                 target:self selector:@selector(onTimer:)
-                                               userInfo:nil repeats:YES];
-    }
-}
-
-- (void)onTimer:(NSTimer*)timer{
-    
-    if(digit==1){
-        num = arc4random() % 9 + 1;
-    }else if(digit==2){
-        if(count==0 || count == 2 || count == 4){
-            num = arc4random() % 90 + 10;
+    if(course_flg==1){
+        _leftNum = arc4random() % 9 + 1;
+        _rightNum = arc4random() % 9 + 1;
+        sum = _leftNum + _rightNum;
+        _lbl_left.text = [NSString stringWithFormat:@"%d",_leftNum];
+        _lbl_right.text = [NSString stringWithFormat:@"%d",_rightNum];
+    }else if (course_flg==2){
+        /*
+        int rdm = arc4random() % 2;
+        if(rdm==0){
+            _leftNum = arc4random() % 90 + 10;
+            _rightNum = arc4random() % 9 + 1;
         }else{
-            num = arc4random() % 9 + 1;
+            _leftNum = arc4random() % 9 + 1;
+            _rightNum = arc4random() % 90 + 10;
         }
-        //num = arc4random() % 90 + 10;
-    }else if (digit==3){
-        //num = arc4random() % 900 + 100;
-        num = arc4random() % 90 + 10;
-    }else if (digit==4){
-        num = arc4random() % 9000 + 1000;
-    }
-    
-    // 重複チェック(値の連続を防ぐ)
-    if( startInput ){
-        startInput = NO;
+        */
+        _leftNum = arc4random() % 90 + 10;
+        _rightNum = arc4random() % 9 + 1;
+        sum = _leftNum + _rightNum;
+        _lbl_left.text = [NSString stringWithFormat:@"%d",_leftNum];
+        _lbl_right.text = [NSString stringWithFormat:@"%d",_rightNum];
     }else{
-        if(chk_num == num){
-            if(num==9 || num==99 || num == 999 || num == 9999){
-                num = num - 1;
-            }else{
-                num = num + 1;
-            }
-        }
+        _leftNum = arc4random() % 90 + 10;
+        _rightNum = arc4random() % 90 + 10;
+        sum = _leftNum + _rightNum;
+        _lbl_left.text = [NSString stringWithFormat:@"%d",_leftNum];
+        _lbl_right.text = [NSString stringWithFormat:@"%d",_rightNum];
     }
-    chk_num = num;
-    num_lbl.text = [NSString stringWithFormat:@"%d",num];
-    count++;
-    sum += num;
-    
-    if (speed==15) {
-        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:1.5];
-    }else if (speed==10){
-        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:1.0];
-    }else{
-        [self performSelector:@selector(hiddenNumber) withObject:nil afterDelay:0.5];
-    }
-
-    if(count == problem){
-        [self timerStop];
-    }
-}
-
--(void)hiddenNumber{
-    num_lbl.text = @"";
-}
-
--(void)timerStop{
-    [timer invalidate];
-    timeflg = FALSE;
-    if(finish_flg==1){
-        num_lbl.text=@"";
-        num_lbl.hidden=YES;
         
-        // 全問不正解
-        if(right_cnt==0){
-            point=0;
-            judge=@"D";
-        }
-        
-        // 保存処理
-        NSDate *date = [NSDate date];
-        NSString *timeDate = [date description];
-        NSString *timeStamp = [timeDate substringToIndex:10];
-        
-        [[FLDataManager sharedManager] insertJudge:judge point:point timeStamp:timeStamp course_flg:course_flg];
-        
-        NSLog(@"course_flg:%d", course_flg);
-        
-        
-        [self performSegueWithIdentifier:@"Push" sender:self];
-    }else{
-        [self performSelector:@selector(modalView) withObject:nil afterDelay:0.5];
-    }
-}
-
--(void)modalView{
-    
-    ChallengeAnswerViewController *CAnswerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Modal"];
-    CAnswerViewController.delegate = self;
-    CAnswerViewController.sum = sum;
-    [self presentViewController:CAnswerViewController animated:YES completion:nil];
-    
-}
-
--(void)nextProblem:(int)result {
-    if(result==1){
-        right_cnt++;
-        //combo_cnt++;
-        [self addPoint];
-    }else if(result==2){
-        //combo_cnt=0;
-        wrong_cnt++;
-        if(wrong_cnt==1){
-            //image1.hidden=YES;
-            image1.highlighted=YES;
-        }else if (wrong_cnt==2){
-            //image2.hidden=YES;
-            image2.highlighted=YES;
-        }else if (wrong_cnt==3){
-            //image3.hidden=YES;
-            image3.highlighted=YES;
-        }
-    }
-    
-    // 3問ミスで強制終了
-    if(5==stg_cnt || wrong_cnt>2){
-        finish_flg=1;
-        [self timerStop];
-    }else{
-        [self startDidPush];
-    }
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
--(void)addPoint{
-    switch (digit) {
-        case 1:
-            if(speed==15){
-                point+=EASY_SLOW_POINT;
-                if(point==5000){
-                    judge=@"S";
-                }else if (point>=4000){
-                    judge=@"A";
-                }else if (point>=3000){
-                    judge=@"B";
-                }else{
-                    judge=@"C";
-                }
-            }else if(speed==10){
-                point+=EASY_NORMAL_POINT;
-                if(point==7500){
-                    judge=@"S";
-                }else if (point>=6000){
-                    judge=@"A";
-                }else if (point>=4500){
-                    judge=@"B";
-                }else{
-                    judge=@"C";
-                }
-            }else{
-                point+=EASY_FAST_POINT;
-                if(point==10000){
-                    judge=@"S";
-                }else if (point>=8000){
-                    judge=@"A";
-                }else if (point>=6000){
-                    judge=@"B";
-                }else{
-                    judge=@"C";
-                }
-            }
+    // 乱数で、選択肢の場所を変更
+    int random = rand() % 24 + 1;
+    switch (random) {
+        case 1:     // 正解が右下
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum];
+            touch_lbl = 4;
             break;
         case 2:
-            if(speed==15){
-                point+=NORMAL_SLOW_POINT;
-                if(point==12500){
-                    judge=@"S";
-                }else if (point>=10000){
-                    judge=@"A";
-                }else if (point>=7500){
-                    judge=@"B";
-                }else{
-                    judge=@"C";
-                }
-            }else if (speed==10){
-                point+=NORMAL_NORMAL_POINT;
-                if(point==15000){
-                    judge=@"S";
-                }else if (point>=12000){
-                    judge=@"A";
-                }else if (point>=9000){
-                    judge=@"B";
-                }else{
-                    judge=@"C";
-                }
-            }else{
-                point+=NORMAL_FAST_POINT;
-                if(point==17500){
-                    judge=@"S";
-                }else if (point>=14000){
-                    judge=@"A";
-                }else if (point>=10500){
-                    judge=@"B";
-                }else{
-                    judge=@"C";
-                }
-            }
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum];
+            touch_lbl = 4;
             break;
         case 3:
-            if(speed==15){
-                point+=HARD_SLOW_POINT;
-                if(point==20000){
-                    judge=@"S";
-                }else if (point>=16000){
-                    judge=@"A";
-                }else if (point>=12000){
-                    judge=@"B";
-                }else{
-                    judge=@"C";
-                }
-            }else if (speed==10){
-                point+=HARD_NORMAL_POINT;
-                if(point==22500){
-                    judge=@"S";
-                }else if (point>=18000){
-                    judge=@"A";
-                }else if (point>=13500){
-                    judge=@"B";
-                }else{
-                    judge=@"C";
-                }
-            }else{
-                point+=HARD_FAST_POINT;
-                if(point==25000){
-                    judge=@"S";
-                }else if (point>=20000){
-                    judge=@"A";
-                }else if (point>=15000){
-                    judge=@"B";
-                }else{
-                    judge=@"C";
-                }
-            }
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum];
+            touch_lbl = 4;
+            break;
+        case 4:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum];
+            touch_lbl = 4;
+            break;
+        case 5:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum];
+            touch_lbl = 4;
+            break;
+        case 6:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum];
+            touch_lbl = 4;
+            break;
+        case 7:     // 正解が左下
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            touch_lbl = 3;
+            break;
+        case 8:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            touch_lbl = 3;
+            break;
+        case 9:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            touch_lbl = 3;
+            break;
+        case 10:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            touch_lbl = 3;
+            break;
+        case 11:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            touch_lbl = 3;
+            break;
+        case 12:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            touch_lbl = 3;
+            break;
+        case 13:        // 正解が右上
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            touch_lbl = 2;
+            break;
+        case 14:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            touch_lbl = 2;
+            break;
+        case 15:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            touch_lbl = 2;
+            break;
+        case 16:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            touch_lbl = 2;
+            break;
+        case 17:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            touch_lbl = 2;
+            break;
+        case 18:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            touch_lbl = 2;
+            break;
+        case 19:        // 正解が左上
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            touch_lbl = 1;
+            break;
+        case 20:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            touch_lbl = 1;
+            break;
+        case 21:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            touch_lbl = 1;
+            break;
+        case 22:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            touch_lbl = 1;
+            break;
+        case 23:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 1];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            touch_lbl = 1;
+            break;
+        case 24:
+            _lbl_leftTop.text = [NSString stringWithFormat:@"%d",sum];
+            _lbl_rightTop.text = [NSString stringWithFormat:@"%d",sum + 2];
+            _lbl_leftDown.text = [NSString stringWithFormat:@"%d",sum - 1];
+            _lbl_rightDown.text = [NSString stringWithFormat:@"%d",sum + 1];
+            touch_lbl = 1;
             break;
         default:
             break;
     }
-    //[self addCombo];
+    if(stg_cnt>1){   // 初期画面ならresetAnimationは必要ない
+        [self resetAnimation];
+    }
 }
 
--(void)addCombo{
-    //　最大値取得
-    if(max_combo<combo_cnt){
-        max_combo=combo_cnt;
+- (IBAction)btnDidPush:(id)sender {
+    
+     _lbl_addTime.hidden=NO;
+    
+    UIButton *b = (UIButton *)sender;
+    
+    if(touch_lbl==4){
+        if(4==b.tag){
+            _lbl_judge.text = @"○";
+            [self addComboPoint];
+            right_cnt++;
+            if(course_flg==1){
+                time_cnt+=1.00;
+                _lbl_addTime.text = @"+ 1.00";
+            }else if (course_flg==2){
+                time_cnt+=1.50;
+                _lbl_addTime.text = @"+ 1.50";
+            }else{
+                time_cnt+=2.00;
+                _lbl_addTime.text = @"+ 2.00";
+            }
+            [self addRightBgm];
+        }else{
+            _lbl_judge.text = @"×";
+            wrong_cnt++;
+            _lbl_combo.hidden=YES;
+            combo=0;
+            if(course_flg==1){
+                time_cnt-=2.00;
+            }else if (course_flg==2){
+                time_cnt-=2.00;
+            }else{
+                time_cnt-=2.00;
+            }
+            _lbl_addTime.text = @"- 2.00";
+            [self addWrongBgm];
+        }
+    }else if(touch_lbl==3){
+        if(3==b.tag){
+            _lbl_judge.text = @"○";
+            [self addComboPoint];
+            right_cnt++;
+            if(course_flg==1){
+                time_cnt+=1.00;
+                _lbl_addTime.text = @"+ 1.00";
+            }else if (course_flg==2){
+                time_cnt+=1.50;
+                 _lbl_addTime.text = @"+ 1.50";
+            }else{
+                time_cnt+=2.00;
+                _lbl_addTime.text = @"+ 2.00";
+            }
+            [self addRightBgm];
+        }else{
+            _lbl_judge.text = @"×";
+            wrong_cnt++;
+            _lbl_combo.hidden=YES;
+            combo=0;
+            if(course_flg==1){
+                time_cnt-=2.00;
+            }else if (course_flg==2){
+                time_cnt-=2.00;
+            }else{
+                time_cnt-=2.00;
+            }
+            _lbl_addTime.text = @"- 2.00";
+            [self addWrongBgm];
+        }
+    }else if (touch_lbl==2){
+        if(2==b.tag){
+            _lbl_judge.text = @"○";
+            [self addComboPoint];
+            right_cnt++;
+            if(course_flg==1){
+                time_cnt+=1.00;
+                _lbl_addTime.text = @"+ 1.00";
+            }else if (course_flg==2){
+                time_cnt+=1.50;
+                 _lbl_addTime.text = @"+ 1.50";
+            }else{
+                time_cnt+=2.00;
+                _lbl_addTime.text = @"+ 2.00";
+            }
+            [self addRightBgm];
+        }else{
+            _lbl_judge.text = @"×";
+            wrong_cnt++;
+            _lbl_combo.hidden=YES;
+            combo=0;
+            if(course_flg==1){
+                time_cnt-=2.00;
+            }else if (course_flg==2){
+                time_cnt-=2.00;
+            }else{
+                time_cnt-=2.00;
+            }
+            _lbl_addTime.text = @"- 2.00";
+            [self addWrongBgm];
+        }
+    }else if(touch_lbl==1){
+        if(1==b.tag){
+            _lbl_judge.text = @"○";
+            [self addComboPoint];
+            right_cnt++;
+            if(course_flg==1){
+                time_cnt+=1.00;
+                 _lbl_addTime.text = @"+ 1.00";
+            }else if (course_flg==2){
+                time_cnt+=1.50;
+                 _lbl_addTime.text = @"+ 1.50";
+            }else{
+                time_cnt+=2.00;
+                _lbl_addTime.text = @"+ 2.00";
+            }
+            [self addRightBgm];
+        }else{
+            _lbl_judge.text = @"×";
+            wrong_cnt++;
+            _lbl_combo.hidden=YES;
+            combo=0;
+            if(course_flg==1){
+                time_cnt-=2.00;
+            }else if (course_flg==2){
+                time_cnt-=2.00;
+            }else{
+                time_cnt-=2.00;
+            }
+            _lbl_addTime.text = @"- 2.00";
+            [self addWrongBgm];
+        }
     }
-    if(combo_cnt>2){
-        point+=COMBO_POINT;
-        fever_lbl.hidden=NO;
-        combo_lbl.hidden=NO;
-        //self.view.backgroundColor=[UIColor yellowColor];
-        combo_lbl.text = [NSString stringWithFormat:@"%d combo", combo_cnt];
+    if(stg_cnt==10){
+        _tranCnt=1;
+        [self performSegueWithIdentifier:@"Result" sender:self];
+    }else{
+        [self startAnimation];
     }
+}
+
+- (void)addRightBgm{
+    NSString *bgmPath = [[NSBundle mainBundle]
+                         pathForResource:@"Seikai01-1" ofType:@"mp3"];
+    NSURL *bgmUrl = [NSURL fileURLWithPath:bgmPath];
+    bgm = [[AVAudioPlayer alloc] initWithContentsOfURL:bgmUrl error:nil];
+    [bgm setNumberOfLoops:0]; // 0なら1回だけ。－1ならエンドレスリピート。
+    [bgm play];
+}
+
+- (void)addWrongBgm{
+    NSString *bgmPath = [[NSBundle mainBundle]
+                         pathForResource:@"wrong" ofType:@"mp3"];
+    NSURL *bgmUrl = [NSURL fileURLWithPath:bgmPath];
+    bgm = [[AVAudioPlayer alloc] initWithContentsOfURL:bgmUrl error:nil];
+    [bgm setNumberOfLoops:0]; // 0なら1回だけ。－1ならエンドレスリピート。
+    [bgm play];
+}
+
+/*
+-(void)addComboPoint{
+    
+    combo++;
+    
+    _lbl_combo.text = [NSString stringWithFormat:@"%d", combo];
+    _lbl_combo.hidden=NO;
+    
+    if(course_flg==1){
+        
+        if(combo<2){
+            point += EASY_POINT;
+        }else if(combo<=2){
+            point += (EASY_POINT * 2);
+        }else if(combo<=4){
+            point += (EASY_POINT * 3);
+        }else if (combo<=6){
+            point += (EASY_POINT * 4);
+        }else if (combo<=8){
+            point += (EASY_POINT * 5);
+        }else{
+            point += (EASY_POINT * 10);
+        }
+        
+    }else if (course_flg==2){
+        if(combo<2){
+            point += NORMAL_POINT;
+        }else if(combo<=2){
+            point += (NORMAL_POINT * 2);
+        }else if(combo<=4){
+            point += (NORMAL_POINT * 3);
+        }else if (combo<=6){
+            point += (NORMAL_POINT * 4);
+        }else if (combo<=8){
+            point += (NORMAL_POINT * 5);
+        }else{
+            point += (NORMAL_POINT * 10);
+        }
+    }else{
+        if(combo<2){
+            point += HARD_POINT;
+        }else if(combo<=2){
+            point += (HARD_POINT * 2);
+        }else if(combo<=4){
+            point += (HARD_POINT * 3);
+        }else if (combo<=6){
+            point += (HARD_POINT * 4);
+        }else if (combo<=8){
+            point += (HARD_POINT * 5);
+        }else{
+            point += (HARD_POINT * 10);
+        }
+    }
+    
+    if(max_combo<combo){
+        max_combo = combo;
+    }
+}
+*/
+
+-(void)addComboPoint{
+    
+    if(course_flg==1){
+        
+        point += EASY_POINT;
+        
+    }else if (course_flg==2){
+        
+        point += NORMAL_POINT;
+        
+    }else{
+        
+        point += HARD_POINT;
+        
+    }
+}
+
+-(void)startAnimation{
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    [UIView setAnimationDuration:0.2];
+    
+    _lbl_leftTop.alpha=0.0;
+    _lbl_rightTop.alpha=0.0;
+    _lbl_leftDown.alpha=0.0;
+    _lbl_rightDown.alpha=0.0;
+    _lbl_left.alpha=0.0;
+    _lbl_right.alpha=0.0;
+    _btn_leftTop.alpha=0.0;
+    _btn_rightTop.alpha=0.0;
+    _btn_leftDown.alpha=0.0;
+    _btn_rightDown.alpha=0.0;
+    _lbl_judge.alpha=0.0;
+    [UIView commitAnimations];
+    
+}
+
+-(void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished{
+    if([finished boolValue]){
+        // アニメーションがキャンセルされずに、完了したら
+        [self didStart];
+    }
+}
+
+-(void)resetAnimation{
+    
+    _lbl_leftTop.alpha=1.0;
+    _lbl_rightTop.alpha=1.0;
+    _lbl_leftDown.alpha=1.0;
+    _lbl_rightDown.alpha=1.0;
+    _lbl_left.alpha=1.0;
+    _lbl_right.alpha=1.0;
+    _btn_leftTop.alpha=1.0;
+    _btn_rightTop.alpha=1.0;
+    _btn_leftDown.alpha=1.0;
+    _btn_rightDown.alpha=1.0;
+    _lbl_judge.alpha=1.0;
+    _lbl_judge.text=@"";
+    
+}
+
+/*
+- (void)resetBackSwipe {
+    
+    NSLog(@"resetBackSwipe");
+    
+    if(course_flg==1){
+        time_cnt=8.00;
+    }else if (course_flg==2){
+        time_cnt=10.00;
+    }else{
+        time_cnt=15.00;
+    }
+    
+    combo=0;
+    sum=0;
+    stg_cnt=0;
+    right_cnt=0;
+    wrong_cnt=0;
+    max_combo=0;
+    
+    [self didStart];
+}
+*/
+
+- (IBAction)swipeHandleGesture:(id)sender {
+    
+    _timeflg=false;
+    [_timer invalidate];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"viewWillDisappear");
+    [super viewWillDisappear:animated];
+    
+    _timeflg=false;
+    [_timer invalidate];
+    
+    if(_tranCnt==0){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    ChallengeRecordTableViewController *CRecordTableViewController = [segue destinationViewController];
-    CRecordTableViewController.right_cnt=right_cnt;
-    CRecordTableViewController.wrong_cnt=wrong_cnt;
-    CRecordTableViewController.point=point;
-    CRecordTableViewController.max_combo=max_combo;
-    CRecordTableViewController.judge=judge;
+    ChallengeResultViewController *challengeResult = [segue destinationViewController];
+    
+    challengeResult.max_combo = max_combo;
+    challengeResult.point = point;
+    challengeResult.time_cnt = time_cnt;
+    challengeResult.right_cnt = right_cnt;
+    challengeResult.wrong_cnt = wrong_cnt;
+    challengeResult.course_flg = course_flg;
     
     
 }
+
 
 
 
