@@ -84,7 +84,6 @@
 		D6EADEE517C4F7660070A39D /* ChallengeResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EADEE417C4F7660070A39D /* ChallengeResultViewController.m */; };
 		D6EADEE817C526200070A39D /* RecordGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EADEE717C5261F0070A39D /* RecordGraphViewController.m */; };
 		D6EADEED17C5278D0070A39D /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EADEEB17C5278D0070A39D /* S7GraphView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D6EADEF217C5BB850070A39D /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EADEF017C5BB850070A39D /* NSDate+Extras.m */; };
 		D6F4AAF017CBF29F00675D90 /* sky_Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6F4AAEF17CBF29F00675D90 /* sky_Background.jpg */; };
 		D6F4AAF217CBF32C00675D90 /* backgroundSky320_480.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6F4AAF117CBF32C00675D90 /* backgroundSky320_480.jpg */; };
 		D6FE4FF917C6B6520049C2E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FE4FF817C6B6510049C2E1 /* AVFoundation.framework */; };
@@ -208,8 +207,6 @@
 		D6EADEEA17C5278D0070A39D /* S7GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7GraphView.h; sourceTree = "<group>"; };
 		D6EADEEB17C5278D0070A39D /* S7GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S7GraphView.m; sourceTree = "<group>"; };
 		D6EADEEC17C5278D0070A39D /* S7Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7Macros.h; sourceTree = "<group>"; };
-		D6EADEEF17C5BB850070A39D /* NSDate+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extras.h"; sourceTree = "<group>"; };
-		D6EADEF017C5BB850070A39D /* NSDate+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extras.m"; sourceTree = "<group>"; };
 		D6F4AAEF17CBF29F00675D90 /* sky_Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky_Background.jpg; sourceTree = "<group>"; };
 		D6F4AAF117CBF32C00675D90 /* backgroundSky320_480.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundSky320_480.jpg; sourceTree = "<group>"; };
 		D6FE4FF817C6B6510049C2E1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -255,7 +252,6 @@
 		D61B41751799922100F51913 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D6EADEEE17C5BB850070A39D /* NSDate */,
 				D6EADEE917C5278D0070A39D /* s7graphview */,
 				D6FE4FF817C6B6510049C2E1 /* AVFoundation.framework */,
 				D6A0C65A17B0448D0051A674 /* CoreText.framework */,
@@ -451,15 +447,6 @@
 			path = s7graphview;
 			sourceTree = "<group>";
 		};
-		D6EADEEE17C5BB850070A39D /* NSDate */ = {
-			isa = PBXGroup;
-			children = (
-				D6EADEEF17C5BB850070A39D /* NSDate+Extras.h */,
-				D6EADEF017C5BB850070A39D /* NSDate+Extras.m */,
-			);
-			path = NSDate;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -596,7 +583,6 @@
 				D6EADEE517C4F7660070A39D /* ChallengeResultViewController.m in Sources */,
 				D6EADEE817C526200070A39D /* RecordGraphViewController.m in Sources */,
 				D6EADEED17C5278D0070A39D /* S7GraphView.m in Sources */,
-				D6EADEF217C5BB850070A39D /* NSDate+Extras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
